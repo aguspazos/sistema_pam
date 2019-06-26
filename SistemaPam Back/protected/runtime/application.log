@@ -1,0 +1,372 @@
+2016/10/17 20:52:08 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/10/17 20:52:17 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/10/17 20:53:42 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/10/17 20:54:00 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/10/17 20:54:18 [error] [exception.CHttpException.404] CHttpException: El sistema no ha podido encontrar la acción "layouts" solicitada. in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CController.php:477
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CController.php(262): CController->missingAction('layouts')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(328): CController->run('layouts')
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('files/layouts/b...')
+#3 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#4 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/files/layouts/budLogo.png
+2016/10/17 20:54:17 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/10/17 20:54:20 [error] [exception.CHttpException.404] CHttpException: El sistema no ha podido encontrar la acción "layouts" solicitada. in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CController.php:477
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CController.php(262): CController->missingAction('layouts')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(328): CController->run('layouts')
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('files/layouts/b...')
+#3 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#4 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/files/layouts/budLogo.png
+2016/10/17 20:54:25 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/10/17 20:54:27 [error] [exception.CHttpException.404] CHttpException: El sistema no ha podido encontrar la acción "layouts" solicitada. in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CController.php:477
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CController.php(262): CController->missingAction('layouts')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(328): CController->run('layouts')
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('files/layouts/b...')
+#3 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#4 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/files/layouts/boilerBudLogo.png
+2016/10/17 20:55:09 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2016/11/18 20:18:57 [error] [exception.CDbException] CDbException: CDbConnection falló al abrir la conexion a la base de datos: SQLSTATE[HY000] [1045] Access denied for user 'boilerbu_user'@'localhost' (using password: YES) in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php:348
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php(297): CDbConnection->open()
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php(275): CDbConnection->setActive(true)
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CModule.php(372): CDbConnection->init()
+#3 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(426): CModule->getComponent('db')
+#4 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(607): CApplication->getDb()
+#5 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Errors))
+#7 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(386): CActiveRecord::model('Errors')
+#8 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(62): CActiveRecord->getMetaData()
+#9 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\protected\models\Errors.php(112): CActiveRecord->__construct()
+#10 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\protected\components\Controller.php(52): Errors::log('Error en Contro...', 'CDbConnection f...', '')
+#11 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(327): Controller->init()
+#12 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('')
+#13 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#14 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/
+2016/11/18 20:21:07 [error] [exception.CDbException] CDbException: CDbConnection falló al abrir la conexion a la base de datos: SQLSTATE[HY000] [1045] Access denied for user 'boilerbu_user'@'localhost' (using password: YES) in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php:348
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php(297): CDbConnection->open()
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php(275): CDbConnection->setActive(true)
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CModule.php(372): CDbConnection->init()
+#3 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(426): CModule->getComponent('db')
+#4 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(607): CApplication->getDb()
+#5 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Errors))
+#7 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(386): CActiveRecord::model('Errors')
+#8 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(62): CActiveRecord->getMetaData()
+#9 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\protected\models\Errors.php(112): CActiveRecord->__construct()
+#10 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\protected\components\Controller.php(52): Errors::log('Error en Contro...', 'CDbConnection f...', '')
+#11 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(327): Controller->init()
+#12 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('')
+#13 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#14 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/
+2016/11/18 20:21:48 [error] [exception.CDbException] CDbException: CDbConnection falló al abrir la conexion a la base de datos: SQLSTATE[HY000] [1049] Unknown database 'boilerbu_db' in C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php:348
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php(297): CDbConnection->open()
+#1 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\CDbConnection.php(275): CDbConnection->setActive(true)
+#2 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CModule.php(372): CDbConnection->init()
+#3 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(426): CModule->getComponent('db')
+#4 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(607): CApplication->getDb()
+#5 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Errors))
+#7 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(386): CActiveRecord::model('Errors')
+#8 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\db\ar\CActiveRecord.php(62): CActiveRecord->getMetaData()
+#9 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\protected\models\Errors.php(112): CActiveRecord->__construct()
+#10 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\protected\components\Controller.php(52): Errors::log('Error en Contro...', 'CDbConnection f...', '')
+#11 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(327): Controller->init()
+#12 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('')
+#13 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#14 C:\Users\pazos\Desktop\Moon\ProyectosMoon\BoilerBud66\public_html\index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/
+2017/11/02 23:27:43 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "docs-assets/ico/favicon.png" in C:\Users\pazos\Desktop\Moon\Proyectos\BoilerBud66\yii\framework\web\CWebApplication.php:332
+Stack trace:
+#0 C:\Users\pazos\Desktop\Moon\Proyectos\BoilerBud66\yii\framework\web\CWebApplication.php(121): CWebApplication->runController('docs-assets/ico...')
+#1 C:\Users\pazos\Desktop\Moon\Proyectos\BoilerBud66\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#2 C:\Users\pazos\Desktop\Moon\Proyectos\BoilerBud66\public_html\index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/docs-assets/ico/favicon.png
+2019/06/25 13:09:33 [error] [exception.CDbException] CDbException: CDbConnection falló al abrir la conexion a la base de datos: SQLSTATE[HY000] [1045] Access denied for user 'boilerbu_user'@'localhost' (using password: YES) in /Users/apazos/Downloads/BoilerBud66/yii/framework/db/CDbConnection.php:348
+Stack trace:
+#0 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /Users/apazos/Downloads/BoilerBud66/yii/framework/base/CModule.php(372): CDbConnection->init()
+#3 /Users/apazos/Downloads/BoilerBud66/yii/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Errors))
+#7 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/ar/CActiveRecord.php(386): CActiveRecord::model('Errors')
+#8 /Users/apazos/Downloads/BoilerBud66/yii/framework/db/ar/CActiveRecord.php(62): CActiveRecord->getMetaData()
+#9 /Users/apazos/Downloads/BoilerBud66/protected/models/Errors.php(112): CActiveRecord->__construct()
+#10 /Users/apazos/Downloads/BoilerBud66/protected/components/Controller.php(52): Errors::log('Error en Contro...', 'CDbConnection f...', '')
+#11 /Users/apazos/Downloads/BoilerBud66/yii/framework/web/CWebApplication.php(327): Controller->init()
+#12 /Users/apazos/Downloads/BoilerBud66/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#13 /Users/apazos/Downloads/BoilerBud66/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#14 /Users/apazos/Downloads/BoilerBud66/public_html/index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/
+2019/06/25 16:49:03 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 16:49:08 [error] [php] Undefined offset: 0 (/Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/views/tools/export.php:33)
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(866): UsersController->renderFile()
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/UsersController.php(182): UsersController->renderPartial()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/actions/CInlineAction.php(50): UsersController->actionExport()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): UsersController->runAction()
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): UsersController->filterAccessControl()
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): UsersController->runActionWithFilters()
+#11 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): UsersController->run()
+#12 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#13 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#14 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/Users/export
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/views/tools/export.php (33)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/UsersController.php (182)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php (12)
+2019/06/25 16:49:39 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 19:09:31 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 19:09:31 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 19:11:22 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 20:35:14 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 20:37:00 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 20:37:00 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/06/25 18:43:24 [error] [php] Undefined variable: ub (/Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php:662)
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/models/LoginForm.php(44): UserIdentity->authenticateAdmin()
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/validators/CInlineValidator.php(39): LoginForm->authenticateAdmin()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/validators/CValidator.php(192): CInlineValidator->validateAttribute()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CModel.php(152): CInlineValidator->validate()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/AdministratorsController.php(156): LoginForm->validate()
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/actions/CInlineAction.php(50): AdministratorsController->actionLogin()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): AdministratorsController->runAction()
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): AdministratorsController->filterAccessControl()
+#11 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#13 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): AdministratorsController->runActionWithFilters()
+#14 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): AdministratorsController->run()
+#15 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#16 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#17 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/Administrators/login
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (662)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/models/Logs.php (114)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/components/UserIdentity.php (30)
+2019/06/25 18:56:23 [error] [php] Undefined variable: hasWorkLaminates (/Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php:130)
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): WorksController->runAction()
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): WorksController->filterAccessControl()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): WorksController->runActionWithFilters()
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): WorksController->run()
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/works/add
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php (130)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php (12)
+2019/06/25 21:58:59 [error] [exception.Error] Error: Access to undeclared static property: WorkStatuses::$DELIVERED in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/models/Works.php:306
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/models/Works.php(287): Works->retrieveNextStatus(2)
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php(366): Works->nextStatus('notes', '1')
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/actions/CInlineAction.php(50): WorksController->actionNextStatus()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): CController->run('nextStatus')
+#12 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('works/nextStatu...')
+#13 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#14 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/works/nextStatus
+2019/06/25 19:02:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'current_status_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `works` `t` WHERE current_status_id < :status.
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/models/Works.php (194)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php (317)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php (12)
+2019/06/25 22:04:16 [error] [php] "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? (/Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/vendors/htmlpurifier/HTMLPurifier.standalone.php:10994)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php(1002): spl_autoload_call()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php(260): purify()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php(322): modelToArray()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/actions/CInlineAction.php(50): WorksController->actionGetAllNotFinished()
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): WorksController->runAction()
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): WorksController->filterAccessControl()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#12 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): WorksController->runActionWithFilters()
+#13 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): WorksController->run()
+#14 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#15 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/works/getAllNotFinished
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (1002)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (260)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php (322)
+2019/06/25 22:05:41 [error] [php] "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? (/Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/vendors/htmlpurifier/HTMLPurifier.standalone.php:10994)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php(1002): spl_autoload_call()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php(260): purify()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php(322): modelToArray()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/actions/CInlineAction.php(50): WorksController->actionGetAllNotFinished()
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): WorksController->runAction()
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): WorksController->filterAccessControl()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#12 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): WorksController->runActionWithFilters()
+#13 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): WorksController->run()
+#14 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#15 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/works/getAllNotFinished
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (1002)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (260)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php (322)
+2019/06/25 22:09:18 [error] [php] "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? (/Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/vendors/htmlpurifier/HTMLPurifier.standalone.php:10994)
+Stack trace:
+#0 unknown(0): autoload()
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php(1002): spl_autoload_call()
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php(260): purify()
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php(320): modelToArray()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/actions/CInlineAction.php(50): WorksController->actionGetAllNotFinished()
+#5 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#6 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(133): WorksController->runAction()
+#7 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#8 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#9 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CInlineFilter.php(59): WorksController->filterAccessControl()
+#10 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(283): CFilterChain->run()
+#12 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(257): WorksController->runActionWithFilters()
+#13 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): WorksController->run()
+#14 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#15 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/works/getAllNotFinished
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (1002)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/helpers/HelperFunctions.php (260)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php (320)
+2019/06/26 20:39:59 [error] [exception.CHttpException.404] CHttpException: El sistema no ha podido encontrar la acción "getAllToSend" solicitada. in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php:477
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(262): CController->missingAction('getAllToSend')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): CController->run('getAllToSend')
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('works/getAllToS...')
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/works/getAllToSend
+2019/06/26 20:40:36 [error] [exception.CHttpException.404] CHttpException: El sistema no ha podido encontrar la acción "getAllToSend" solicitada. in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php:477
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(262): CController->missingAction('getAllToSend')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): CController->run('getAllToSend')
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('works/getAllToS...')
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/works/getAllToSend
+2019/06/26 20:41:08 [error] [exception.CHttpException.404] CHttpException: El sistema no ha podido encontrar la acción "getAllToSend" solicitada. in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php:477
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CController.php(262): CController->missingAction('getAllToSend')
+#1 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(328): CController->run('getAllToSend')
+#2 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('works/getAllToS...')
+#3 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php(12): CApplication->run()
+#5 {main} REQUEST_URI=/works/getAllToSend
+2019/06/26 17:41:58 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '== 7 and deleted = 0' at line 1. The SQL statement executed was: SELECT * FROM `works` `t` WHERE current_work_status_id == :status and deleted = 0.
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/models/Works.php (200)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/protected/controllers/WorksController.php (327)
+in /Users/apazos/Desktop/Trabajos/Arocena/ArocenaBack/public_html/index.php (12)

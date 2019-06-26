@@ -1,0 +1,205 @@
+#mainText{
+    position: relative;
+    margin: 0px auto;
+    width: 300px;
+    text-align: center;
+    line-height: 13px;
+    color: whitesmoke;
+    margin-top: 7%;
+    opacity: 0;
+    font-size: 22px;
+}
+#mainTextUnderline{
+    position: absolute;
+    width:60%;
+    height:2px;
+    background-color: white;
+    opacity:0.6;
+    top:25px;
+    left:20%;
+    opacity: 0;
+}
+#registerForm{
+    position: relative;
+    width:500px;
+    margin: 0px auto;
+    margin-top: 2%;
+    height:auto;
+    overflow: hidden;    
+    color: whitesmoke;
+    opacity: 0;
+}
+.registerFormFieldBox{
+    position: relative;
+    float: left;
+    width: 250px;
+    margin: 0px auto;
+    margin-top: 15px;
+    height: auto;
+    overflow: hidden; 
+}
+.registerFormFieldTitle{
+    position: relative;
+    letter-spacing: 2px;
+}
+.registerFormFieldOuter{
+    position: relative;
+    border: 1px white solid;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 87%;
+}
+.registerFormRadioOuter{
+    position: relative;
+    border: 1px transparent solid;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 87%;
+}
+.registerFormRadioOption{
+    position: relative;
+    float: left;
+    width: 20px;
+    height: 35px;
+}
+.registerFormRadioOptionTitle{
+    position: relative;
+    float: left;
+    font-size: 16px;
+    margin-top: 13px;
+}
+.registerFormField{
+    position: relative;
+    width: 94%;
+    margin-left: 3%;
+    background-color: transparent;
+    margin-top: 9px;
+}
+#acceptTermsRow {
+    position: relative;
+    width: 500px;
+    margin: 0px auto;
+    margin-top: 10px;
+    height: 25px;
+    opacity: 0;
+}
+#acceptTermsSquare{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#acceptTermsTick{
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    display: none;
+    font-size: 20px;
+}
+#acceptTermsText{
+    position: relative;
+    float: left;
+    margin-left: 6px;
+    margin-top: 7px;
+}
+#acceptTermsClick{
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    left: 0px;
+    top: 0px;
+}
+#acceptTermsClick:hover{
+    cursor: pointer;
+}
+#registrate{
+    position: relative;
+    margin: 0px auto;
+    display: block;
+    margin-top: 1%;
+    width:200px;
+    opacity: 0;
+}
+#registrate:hover{
+    cursor:pointer;
+}
+
+#logoContainer{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #mainText {
+        margin-top: 20%;
+    }
+    #registerForm{
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 7%;
+    }
+    
+    .registerFormFieldBox{
+        width: 100%;
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-top: 15px;
+    }
+    .registerFormFieldOuter {
+        width: 95%;
+        height: 50px;
+    }
+    
+    #acceptTermsRow{
+        margin-top: 20px;
+        width: 95%;
+    }
+    #acceptTermsSquare {
+        width: 30px;
+        height: 30px;
+    }
+    #acceptTermsTick {
+        left: 9px;
+        font-size: 40px;
+    }   
+    #acceptTermsClick {
+        width: 42px;
+        height: 42px;
+    }
+    #acceptTermsText{
+        margin-left: 10px;    
+        font-size: 18px;
+        margin-top: 15px;
+    }
+    #registrate{
+        margin-top: 30px;
+        margin-bottom: 100px;
+    }
+    .registerFormField {
+        height: 100%;
+        margin-top: 0px;
+    }
+    #mainTextUnderline {
+        opacity: 0.6;
+        top: 17px;
+        left: 34%;
+        width:33%;
+    }
+    body{
+        position: relative;
+        width:100%;
+        height:auto;
+        overflow: auto;    
+    }
+    html{
+            min-height: 100%;
+    position: relative;
+    top: 0px;
+    margin-top: 0px;
+    overflow: auto;
+    }
+}

@@ -1,0 +1,104 @@
+body{
+    background-image: url('/files/layouts/fondo.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    width:100%;
+    height:100%;
+    min-height: 600px;
+    min-width: 800px;
+    display: block;
+    color: whitesmoke;
+}
+#menu{
+    position: absolute;
+    left:50px;
+    top:30px;
+    width:50%;
+    opacity: 0;
+}
+.menuItem{
+    float: left;
+    margin-top: 3px;
+    display: block;
+    text-decoration: none;
+    font-size: 17px;
+    letter-spacing: 3px;
+}
+.menuSeparation{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+    float:left;
+}
+
+#logoContainer{
+    position: relative;
+    width: 750px;
+    margin: 0 auto;
+    margin-top: 50px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#mainLogo{
+    position: relative;
+    margin-top: 50px;
+    width: 180px;
+    display: block;
+    float: left;
+    margin-right: 50px;
+}
+
+#footerLogos{
+    position: relative;
+    margin-top: 120px;
+    margin-right: 45px;
+    width: 238px;
+    float: left;
+}
+
+#itsUpToYou{
+    position: relative;
+    font-size: 40px;
+    float: left;
+    width: 200px;
+    margin-top: 140px;
+}
+
+#footerLegal{
+    position: absolute;
+    left: 0px;
+    bottom:0px;
+    display: block;
+    width: 100%;
+    opacity: 0;
+}
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        overflow: hidden;
+        min-height: 0px;
+        min-width: 0px;
+    }
+    #menu{
+        left: 5px;
+        top: 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+    .menuItem{
+        font-size: 13px;
+    }
+    .menuSeparation{
+        margin-left: 5px;
+        font-size: 13px;
+    }
+    #mainLogo{
+        height: 20%;
+        width: auto;
+    }
+    #alertMessageDiv{
+        width: 100%;
+    }
+}

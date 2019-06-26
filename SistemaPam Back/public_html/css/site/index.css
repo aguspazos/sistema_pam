@@ -1,0 +1,109 @@
+
+#mainText{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    margin-top: 40px;
+    text-shadow: black 2px 2px 3px;
+    opacity: 0;
+}
+#participate{
+    position: relative;
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 0px auto;
+    opacity: 0;
+}
+#participate:hover{
+    cursor:pointer;
+    opacity: 0.9;
+}
+
+#dateContainer{
+    font-size: 30px;
+    width: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 60px;
+    opacity: 0;
+}
+
+#eventDate{
+    position: relative;
+    float: left;
+    margin-right: 75px;
+    width: 80px;
+}
+
+#eventTime{
+    position: relative;
+    float: left;
+    margin-right: 50px;
+    width: 95px;
+}
+
+#gmtTime{
+    position: relative;
+    float: left;
+    width: 97px;
+}
+
+#winText{
+    font-size: 40px;
+    line-height: 45px;
+}
+
+@media only screen and (max-width: 600px) {
+    #logoContainer{
+        width: 100%;
+    }
+    #footerLogos{
+        width: 30%;
+        height:auto;
+        margin-top: 13%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    #mainLogo{
+        width: 20%;
+        height:auto;
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 6%;
+    }
+    #itsUpToYou{
+        width: 20%;
+        height: auto;
+        margin-top: 0%;
+        margin-right: 5%;
+        margin-left: 5%;
+        font-size: 36px;
+    }
+    #dateContainer {
+        font-size: 22px;
+        width: 250px;
+        margin-top: 10%;
+    }
+    #eventDate {
+        margin-right: 20px;
+        width: 65px;
+    }
+    
+    #eventTime {
+        margin-right: 20px;
+        width: 70px;
+    }
+    #gmtTime{
+        width: 75px;
+    }
+    #winText {
+        font-size: 30px;
+        line-height: 35px;
+    }   
+    #participate{
+        width: 60%;
+    }
+}
