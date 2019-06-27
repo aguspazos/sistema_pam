@@ -335,9 +335,12 @@ class HelperFunctions
     }
     
     public static function getFormattedDate($origDate){
+
+
+        $dateStarted = DateTime::createFromFormat('D M d Y H:i:s e+', $origDate);
         date_default_timezone_set('America/Montevideo');
-        $time = strtotime($origDate);
-		return date('Y-m-d H:i:s', $time);
+        return $dateStarted->format("Y-m-d H:i:s");
+
     }
 	
 	public static function formatDate($origDate){
