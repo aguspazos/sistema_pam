@@ -186,6 +186,17 @@ class Clients extends CActiveRecord{
                 return false;
             }
         }
+
+        public function toArray(){
+            $me = array();
+            $me['name'] = $this->name;
+            $me['address'] = $this->address;
+            $me['phone'] = $this->phone;
+            $me['code'] = $this->code;
+            $me['updated_on'] = $this->updated_on;
+            $me['created_on'] = $this->created_on;
+            return $me;
+        }
             
         
             

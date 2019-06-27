@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'works':
  * @property integer $id
  * @property integer $print_type_id
- * @property integer $paper_size
+ * @property string $paper_size
  * @property string $paper_type_id
  * @property integer $prints_amount
  * @property string $image_url
@@ -65,11 +65,10 @@ class Works extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('print_type_id, paper_size, paper_type_id, prints_amount, image_url, notes, created_on, updated_on, deleted, admin_id, current_work_status_id, current_status_type_id, ', 'required'),
-            array('print_type_id, paper_size, prints_amount, admin_id, current_work_status_id, current_status_type_id, ', 'numerical', 'integerOnly' => true),
+            array('print_type_id, paper_size, paper_type_id, prints_amount, image_url, notes, created_on, updated_on, deleted, admin_id, current_work_status_id, current_status_type_id,due_date, ', 'required'),
+            array('print_type_id, prints_amount, admin_id, current_work_status_id, current_status_type_id, ', 'numerical', 'integerOnly' => true),
             array('deleted, ', 'boolean'),
             array('created_on, updated_on, ', 'date', 'format' => 'yyyy-MM-dd hh:mm:ss'),
-            array('paper_type_id', 'length', 'max' => 11),
             array('image_url', 'length', 'max' => 512),
             array('id, print_type_id, paper_size, paper_type_id, prints_amount, image_url, notes, created_on, updated_on, deleted, admin_id, current_work_status_id, current_status_type_id, ', 'safe', 'on' => 'search'),
 
@@ -199,7 +198,7 @@ class Works extends CActiveRecord
     {
         return self::model()->findAll('current_work_status_id = :status and deleted = 0', array('status' => WorkStatuses::$FINISHED));
     }
-    public static function create($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id, $current_work_status_id, $current_status_type_id)
+    public static function create($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id, $current_work_status_id, $current_status_type_id,$due_date)
     {
         $work = new Works;
         $work->print_type_id = $print_type_id;
@@ -214,6 +213,7 @@ class Works extends CActiveRecord
         $work->admin_id = $admin_id;
         $work->current_work_status_id = $current_work_status_id;
         $work->current_status_type_id = $current_status_type_id;
+        $work->due_date = HelperFunctions::getFormattedDate($due_date);
         if ($work->save())
             return $work;
         else {
@@ -222,7 +222,7 @@ class Works extends CActiveRecord
         }
     }
 
-    public function updateAttributes($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id, $current_work_status_id, $current_status_type_id)
+    public function updateAttributes($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id,$due_date)
     {
         $this->print_type_id = $print_type_id;
         $this->paper_size = $paper_size;
@@ -232,6 +232,7 @@ class Works extends CActiveRecord
         $this->notes = $notes;
         $this->updated_on = HelperFunctions::getDate();
         $this->admin_id = $admin_id;
+        $this->due_date =getFormattedDate($due_date);
         if ($this->save())
             return true;
         else {
@@ -260,7 +261,7 @@ class Works extends CActiveRecord
     {
         $workLaminate = WorkLaminates::get($this->current_status_type_id);
         if ($workLaminate) {
-            return HelperFunctions::modelToArray($workLaminate);
+            return $workLaminate->toArray();
         } else {
             return array();
         }
@@ -270,7 +271,7 @@ class Works extends CActiveRecord
     {
         $workRumblings = WorkRumblings::get($this->current_status_type_id);
         if ($workRumblings) {
-            return HelperFunctions::modelToArray($workRumblings);
+            return $workRumblings->toArray();
         } else {
             return array();
         }
@@ -280,7 +281,7 @@ class Works extends CActiveRecord
     {
         $workBound = WorkBounds::get($this->current_status_type_id);
         if ($workBound) {
-            return HelperFunctions::modelToArray($workBound);
+            return $workBound->toArray();
         } else {
             return array();
         }
@@ -298,6 +299,7 @@ class Works extends CActiveRecord
             WorkStatusChanges::create($this->id,$originalStatusId,$this->current_work_status_id,$notes,$adminId);
             $response['status'] = 'ok';
             $response['message'] = 'Estado Actualizado';
+            $response['currentStatus'] = $this->current_work_status_id;
         } else {
             $response['status'] = 'error';
             $response['message'] = print_r(HelperFunctions::getErrorsFromModel($this), true);
@@ -337,8 +339,8 @@ class Works extends CActiveRecord
     public function getCurrentStatusType($currentWorkStatus)
     {
         switch ($currentWorkStatus) {
-            case WorkStatuses::$WITH_DETAILS:
-                return WorkDetails::getFromWorkId($this->id);
+            case WorkStatuses::$PRINTED:
+                return WorkPrints::getFromWorkId($this->id);
                 break;
             case WorkStatuses::$WITH_LAMINATE:
                 return WorkLaminates::getFromWorkId($this->id);
@@ -355,7 +357,7 @@ class Works extends CActiveRecord
         }
     }
 
-    public function toArray(){
+    public function toArray($withStatusTypes = false,$withNotes = false){
         $me = array();
         $me['id'] = $this->id;
         $me['print_type_id'] = $this->id;
@@ -369,6 +371,29 @@ class Works extends CActiveRecord
         $me['admin_id'] = $this->admin_id;
         $me['current_work_status_id'] = $this->current_work_status_id;
         $me['current_status_type_id'] = $this->current_status_type_id;
+        if($withStatusTypes){
+            $laminated = array();
+            $workLaminated = WorkLaminates::getFromWorkId($this->id);
+            if($workLaminated){
+                $laminated = $workLaminated->toArray($withNotes);
+            }
+            $me['laminado'] = $laminated;
+
+            $rumbled = array();
+            $workRumbled = WorkRumblings::getFromWorkId($this->id);
+            if($workRumbled){
+                $rumbled = $workRumbled->toArray($withNotes);
+            }
+            $me['troquelado'] = $rumbled;
+
+            $bounded = array();
+            $workBound = WorkBounds::getFromWorkId($this->id);
+            if($workBound){
+                $bounded = $workBound->toArray($withNotes);
+            }
+            $me['encuadernado'] = $bounded;
+        }
+        
         return $me;
     }
 }

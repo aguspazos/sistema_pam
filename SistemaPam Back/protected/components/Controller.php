@@ -37,15 +37,16 @@ class Controller extends CController
 
     public function init() {
         try{
+            HelperFunctions::dumpToPost();
             $this->isMobile = HelperFunctions::isMobileBrowser();
             if(strlen(CookieHandler::get('main')) != 32)
                 Cookies::create();
             if(!isset(Yii::app()->session['set']))
                 Sessions::create();
             
-            if(isset(Yii::app()->session['session_admin_id'])){
+            // if(isset(Yii::app()->session['session_admin_id'])){
                 $this->administrator = Administrators::getCurrentAdministrator();
-            }
+            //}
         }
         catch (Exception $ex)
         {

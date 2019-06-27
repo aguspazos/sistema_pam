@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "6a88d57d-80e2-4e41-80e5-b3415e768940",
+		"name": "tuca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"{{email}}\",\n\t\"password\":\"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/administrators/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"administrators",
+						"login"
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"{{registerEmail}}\",\n\t\"password\":\"{{password}}\",\n\t\"name\":\"{{name}}\",\n\t\"last_name\":\"{{last_name}}\",\n\t\"phone\":\"{{phone}}\",\n\t\"administrator_role_id\":\"{{administrator_role_id}}\",\n\t\"token\":\"{{token}}\"\n}\n\n"
+				},
+				"url": {
+					"raw": "{{url}}/administrators/add",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"administrators",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createClient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"{{name}}\",\n\t\"address\":\"{{address}}\",\n\t\"phone\":\"{{phone}}\",\n\t\"code\":\"{{code}}\",\n\t\"token\":\"{{token}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/clients/add",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clients",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetClients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/clients/getAllArray",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"clients",
+						"getAllArray"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Work Con todo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"print_type_id\":\"{{print_type_id}}\",\n  \"paper_size\":\"{{paper_size}}\",\n  \"paper_type_id\":\"{{paper_type_id}}\",\n  \"prints_amount\":\"{{prints_amount}}\",\n  \"image_url\":\"{{image_url}}\",\n  \"notes\":\"{{notes}}\",\n  \"due_date\":\"{{due_date}}\",\n  \"token\":\"{{token}}\",\n  \"work_prints\":{},\n   \"work_laminates\":{\n\t   \t\"printing\":\"largo\",\n\t   \t\"type\": \"1\"\n   },\n   \"work_rumblings\":{\n   \t\"shape\":\"redondo\",\n   \t\"amount\":\"20\",\n   \t\"detail\":\"detalles\"\n   },\n   \"work_uvs\":\"\",\n   \"work_bounds\":{\n   \t\"type\":\"1\",\n   \t\"others_text\":\"\"\n   },\n   \"work_delivers\":{\n   \t\"client_id\":\"{{client_id}}\",\n\t\"deliver_date\":\"{{due_date}}\"\n   }\n}\n\n"
+				},
+				"url": {
+					"raw": "{{url}}/works/add",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"works",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nextStatus",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"token\":\"{{token}}\",\n\"work_id\":\"11\",\n\"notes\":\"notas de cambio\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/works/nextStatus",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"works",
+						"nextStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getWorksNotFinished",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/works/getAllNotFinished",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"works",
+						"getAllNotFinished"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -191,6 +191,19 @@ class WorkBounds extends CActiveRecord{
                 return false;
             }
         }
+
+        public function toArray($withNotes = false){
+            $me = array();
+            $me['type'] = $this->type;
+            $me['others_text'] = $this->others_text;
+            if($withNotes){
+                $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$BOUNDED);
+                foreach($workStatusChanges as $workStatusChange){
+                    $me['notes'][] = $workStatusChange->notes;
+                }
+            }
+            return $me;
+        }
             
         
             

@@ -332,7 +332,16 @@ class HelperFunctions
 		
 		
 		return $spanishDate;
-	}
+    }
+    
+    public static function getFormattedDate($origDate){
+
+
+        $dateStarted = DateTime::createFromFormat('D M d Y H:i:s e+', $origDate);
+        date_default_timezone_set('America/Montevideo');
+        return $dateStarted->format("Y-m-d H:i:s");
+
+    }
 	
 	public static function formatDate($origDate){
 		if(date("l d F Y",strtotime($origDate))==date("l d F Y", strtotime(self::getDate()))){
@@ -1019,6 +1028,17 @@ class HelperFunctions
        public static function isValidEmail($email){
            return filter_var($email, FILTER_VALIDATE_EMAIL);
        }
+
+       public static function dumpToPost(){
+            
+        $data = json_decode(file_get_contents('php://input'),1);
+
+        if($data!=null){
+            foreach ($data as $key=>$value){
+                $_POST[$key] = $value;
+            }
+        }
+    }
         
         public static function validateUruguayDocument($document){
             $document = preg_replace('/[^0-9]+/', "", $document);
