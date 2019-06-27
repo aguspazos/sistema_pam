@@ -29,7 +29,7 @@ class WorksController extends Controller
 
             array(
                 'allow',  // allow all users to perform 'index' and 'view' actions
-                'actions' => array('add', 'getAllNotFinished', 'getAllToSend', 'nextStatus'),
+                'actions' => array('add', 'getAllNotFinished', 'getAllToSend', 'nextStatus','getAllSent'),
                 'users' => array('*'),
             ),
             array(
@@ -385,6 +385,32 @@ class WorksController extends Controller
         }
         echo json_encode($response);
     }
+
+    public function actionGetAllSent()
+    {
+        $response = array();
+        try {
+            if ($this->administrator) {
+                $works = Works::getAllSent();
+                $worksArray = array();
+                foreach ($works as $work) {
+                    $worksArray[] = $work->toArray();
+                }
+                $response['status'] = 'ok';
+                $response['trabajos'] = $worksArray;
+            } else {
+                $response['status'] = 'error';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No tienes autorización para realizar esta acción';
+            }
+        } catch (Exception $ex) {
+            Errors::log('Error en WorksController/getAllToSend', $ex->getMessage(), '');
+            $response['status'] = 'error';
+            $response['error'] = 'unknown';
+            $response['errorMessage'] = 'unknown';
+        }
+        echo json_encode($response);
+    }
     public function actionGetAllNotFinished()
     {
         $response = array();
@@ -411,6 +437,8 @@ class WorksController extends Controller
         }
         echo json_encode($response);
     }
+
+    
 
     public function actionNextStatus()
     {

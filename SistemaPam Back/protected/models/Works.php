@@ -190,13 +190,17 @@ class Works extends CActiveRecord
 
     public static function getAllNotFinished($adminId = 0)
     {
-        return self::model()->findAll('current_work_status_id < :status and deleted = 0', array('status' => WorkStatuses::$FINISHED));
+        return self::model()->findAll('current_work_status_id < :status and deleted = 0 order by due_date ASC', array('status' => WorkStatuses::$FINISHED));
     }
 
     
     public static function getAllToSend($adminId = 0)
     {
-        return self::model()->findAll('current_work_status_id = :status and deleted = 0', array('status' => WorkStatuses::$FINISHED));
+        return self::model()->findAll('current_work_status_id = :status and deleted = 0 order by due_date ASC', array('status' => WorkStatuses::$FINISHED));
+    }
+    public static function getAllSent($adminId = 0)
+    {
+        return self::model()->findAll('current_work_status_id = :status and deleted = 0 order by due_date ASC', array('status' => WorkStatuses::$DELIVERED));
     }
     public static function create($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id, $current_work_status_id, $current_status_type_id,$due_date)
     {
@@ -310,7 +314,7 @@ class Works extends CActiveRecord
     public function retrieveNextStatus($currentWorkStatus)
     {
         
-        if($currentWorkStatus == WorkStatuses::$DELIVERED){
+        if($currentWorkStatus >= WorkStatuses::$DELIVERED){
             $workDelivered = WorkDelivers::getFromWorkId($this->id);
             if ($workDelivered) {
                 return array('current_status_type_id' => $workDelivered->id, 'current_work_status_id' => WorkStatuses::$DELIVERED);

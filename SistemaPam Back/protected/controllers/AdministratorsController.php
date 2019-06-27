@@ -286,16 +286,16 @@ class AdministratorsController extends Controller
         $response = array();
         try {
             if (isset($_POST['administrator']) && is_array($_POST['administrator'])) {
-                if (isset(_POST['id']) && is_numeric(_POST['id']) && isset(_POST['email']) && isset(_POST['name']) && isset(_POST['last_name']) && isset(_POST['phone']) && isset(_POST['administrator_role_id']) && isset(_POST['active'])) {
-                    $administrator = Administrators::get(_POST['id']);
+                if (isset($_POST['id']) && is_numeric($_POST['id']) && isset($_POST['email']) && isset($_POST['name']) && isset($_POST['last_name']) && isset($_POST['phone']) && isset($_POST['administrator_role_id']) && isset($_POST['active'])) {
+                    $administrator = Administrators::get($_POST['id']);
                     if (isset($administrator->id)) {
-                        if (Administrators::checkUnique(_POST['email'], _POST['id'])) {
+                        if (Administrators::checkUnique($_POST['email'], $_POST['id'])) {
 
-                            $administrator->updateAttributes(_POST['email'], _POST['name'], _POST['last_name'], _POST['phone'], _POST['administrator_role_id'], _POST['active']);
+                            $administrator->updateAttributes($_POST['email'], $_POST['name'], $_POST['last_name'], $_POST['phone'], $_POST['administrator_role_id'], _POST['active']);
 
                             if (!$administrator->hasErrors()) {
                                 $administratorFiles = array();
-                                if (isset(_POST['administratorFiles']) && is_array(_POST['administratorFiles']))
+                                if (isset($_POST['administratorFiles']) && is_array($_POST['administratorFiles']))
                                     $administratorFiles = _POST['administratorFiles'];
                                 AdministratorFiles::updateAdministrator($administrator->id, $administratorFiles, false);
 
