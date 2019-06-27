@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'work_rumblings':
  * @property integer $id
  * @property integer $work_id
- * @property integer $shape
+ * @property string $shape
  * @property integer $amount
  * @property string $detail
  * @property datetime $created_on
@@ -52,7 +52,7 @@ class WorkRumblings extends CActiveRecord{
 		// will receive user inputs.
 		return array(
 			array('work_id, shape, amount, detail, created_on, updated_on, deleted, admin_id, ', 'required'),
-                        array('work_id, shape, amount, admin_id, ', 'numerical', 'integerOnly'=>true),
+                        array('work_id, amount, admin_id, ', 'numerical', 'integerOnly'=>true),
                         array('deleted, ', 'boolean'),
                         array('created_on, updated_on, ', 'date', 'format'=>'yyyy-MM-dd hh:mm:ss'),
                         array('id, work_id, shape, amount, detail, created_on, updated_on, deleted, admin_id, ', 'safe', 'on'=>'search'),
@@ -196,6 +196,20 @@ class WorkRumblings extends CActiveRecord{
                 Errors::log('Error en Models/WorkRumblings/deleteWorkRumbling','Error deleting workRumbling id:$this->id', print_r($this->getErrors(),true));
                 return false;
             }
+        }
+
+        public function toArray($withNotes = false){
+            $me = array();
+            $me['shape'] = $this->shape;
+            $me['amount'] = $this->amount;
+            $me['detail'] = $this->detail;
+            if($withNotes){
+                $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$WITH_RUMBLING);
+                foreach($workStatusChanges as $workStatusChange){
+                    $me['notes'][] = $workStatusChange->notes;
+                }
+            }
+            return $me;
         }
             
         

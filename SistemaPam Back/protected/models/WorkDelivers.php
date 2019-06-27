@@ -150,7 +150,7 @@ class WorkDelivers extends CActiveRecord{
             $workDeliver = new WorkDelivers;
             $workDeliver->work_id = $work_id;
             $workDeliver->client_id = $client_id;
-            $workDeliver->deliver_date = $deliver_date;
+            $workDeliver->deliver_date = HelperFunctions::getFormattedDate($deliver_date);
             $workDeliver->created_on = HelperFunctions::getDate();
             $workDeliver->updated_on = HelperFunctions::getDate();
             $workDeliver->deleted = 0;
@@ -166,7 +166,7 @@ class WorkDelivers extends CActiveRecord{
         public function updateAttributes($work_id, $client_id, $deliver_date, $admin_id){
             $this->work_id = $work_id;
             $this->client_id = $client_id;
-            $this->deliver_date = $deliver_date;
+            $this->deliver_date = HelperFunctions::getFormattedDate($deliver_date);
             $this->updated_on = HelperFunctions::getDate();
             $this->admin_id = $admin_id;
             if($this->save())

@@ -3,13 +3,15 @@
 class WorkStatuses
 {
     public static $STARTED = 1;
-    public static $WITH_DETAILS = 2;
+    public static $PRINTED = 2;
     public static $WITH_LAMINATE = 3;
     public static $WITH_RUMBLING = 4;
     public static $WITH_UV = 5;
     public static $BOUNDED = 6;
     public static $FINISHED = 7;
     public static $DELIVERED = 8;
+
+    public static $WITH_DETAILS = -77;
 
 
     public $id;
@@ -21,9 +23,9 @@ class WorkStatuses
             case self::$STARTED:
             return 'Empezado';
             break;
-            case self::$WITH_DETAILS:
-                return 'Terminaciones';
-                break;
+            case self::$PRINTED:
+            return 'Impreso';
+            break;
             case self::$WITH_LAMINATE:
                 return 'Laminado';
                 break;

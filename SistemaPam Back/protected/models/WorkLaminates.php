@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'work_laminates':
  * @property integer $id
  * @property integer $work_id
- * @property integer $printing
+ * @property string $printing
  * @property integer $type
  * @property datetime $created_on
  * @property datetime $updated_on
@@ -51,7 +51,7 @@ class WorkLaminates extends CActiveRecord{
 		// will receive user inputs.
 		return array(
 			array('work_id, printing, type, created_on, updated_on, deleted, admin_id, ', 'required'),
-                        array('work_id, printing, type, admin_id, ', 'numerical', 'integerOnly'=>true),
+                        array('work_id, type, admin_id, ', 'numerical', 'integerOnly'=>true),
                         array('deleted, ', 'boolean'),
                         array('created_on, updated_on, ', 'date', 'format'=>'yyyy-MM-dd hh:mm:ss'),
                         array('id, work_id, printing, type, created_on, updated_on, deleted, admin_id, ', 'safe', 'on'=>'search'),
@@ -190,6 +190,20 @@ class WorkLaminates extends CActiveRecord{
                 Errors::log('Error en Models/WorkLaminates/deleteWorkLaminat','Error deleting workLaminat id:$this->id', print_r($this->getErrors(),true));
                 return false;
             }
+        }
+
+        public function toArray($withNotes = false){
+            $me = array();
+            $me['printing'] = $this->printing;
+            $me['type'] = $this->type;
+
+            if($withNotes){
+                $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$WITH_LAMINATE);
+                foreach($workStatusChanges as $workStatusChange){
+                    $me['notes'][] = $workStatusChange->notes;
+                }
+            }
+            return $me;
         }
             
         

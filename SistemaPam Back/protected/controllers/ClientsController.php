@@ -27,10 +27,11 @@ class ClientsController extends Controller
     {
         return array(
 
-            /*array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array(),
-				'users'=>array('*'),
-			),*/
+            array(
+                'allow',  // allow all users to perform 'index' and 'view' actions
+                'actions' => array('getAllArray', 'add', 'save', 'delete'),
+                'users' => array('*'),
+            ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('getArray', 'getAllArray', 'viewMain', 'viewAdd', 'viewEdit', 'add', 'save', 'delete'),
@@ -103,25 +104,31 @@ class ClientsController extends Controller
     {
         $response = array();
         try {
-            $clientArray = $_POST;
-            if (isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['code'])) {
+            if ($this->administrator) {
+                $clientArray = $_POST;
+                if (isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['code'])) {
 
-                $client = Clients::create($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['code']);
-                if (!$client->hasErrors()) {
-                    $response['status'] = 'ok';
-                    $response['message'] = Clients::getModelName('singular') . ' agregado.';
-                    $response['id'] = $client->id;
+                    $client = Clients::create($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['code']);
+                    if (!$client->hasErrors()) {
+                        $response['status'] = 'ok';
+                        $response['message'] = Clients::getModelName('singular') . ' agregado.';
+                        $response['id'] = $client->id;
 
-                    Logs::log('Se creó el Client ' . $client->id);
+                        Logs::log('Se creó el Client ' . $client->id);
+                    } else {
+                        $response['status'] = 'error';
+                        $response['error'] = 'errorSavingClient';
+                        $response['errorMessage'] = HelperFunctions::getErrorsFromModel($client);
+                    }
                 } else {
                     $response['status'] = 'error';
-                    $response['error'] = 'errorSavingClient';
-                    $response['errorMessage'] = HelperFunctions::getErrorsFromModel($client);
+                    $response['error'] = 'invalidData';
+                    $response['errorMessage'] = 'invalidData';
                 }
             } else {
                 $response['status'] = 'error';
-                $response['error'] = 'invalidData';
-                $response['errorMessage'] = 'invalidData';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
             }
             echo json_encode($response);
         } catch (Exception $ex) {
@@ -137,33 +144,39 @@ class ClientsController extends Controller
     {
         $response = array();
         try {
-            $clientArray = $_POST;
-            if (isset($clientArray['id']) && is_numeric($clientArray['id']) && isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['code'])) {
-                $client = Clients::get($clientArray['id']);
-                if (isset($client->id)) {
+            if ($this->administrator) {
+                $clientArray = $_POST;
+                if (isset($clientArray['id']) && is_numeric($clientArray['id']) && isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['code'])) {
+                    $client = Clients::get($clientArray['id']);
+                    if (isset($client->id)) {
 
-                    $client->updateAttributes($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['code']);
-                    if (!$client->hasErrors()) {
+                        $client->updateAttributes($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['code']);
+                        if (!$client->hasErrors()) {
 
 
-                        $response['status'] = 'ok';
-                        $response['message'] = Clients::getModelName('singular') . ' guardado.';
+                            $response['status'] = 'ok';
+                            $response['message'] = Clients::getModelName('singular') . ' guardado.';
 
-                        Logs::log('Se editó el Client ' . $client->id);
+                            Logs::log('Se editó el Client ' . $client->id);
+                        } else {
+                            $response['status'] = 'error';
+                            $response['error'] = 'ErrorSavingClient';
+                            $response['errorMessage'] = HelperFunctions::getErrorsFromModel($client);
+                        }
                     } else {
                         $response['status'] = 'error';
-                        $response['error'] = 'ErrorSavingClient';
-                        $response['errorMessage'] = HelperFunctions::getErrorsFromModel($client);
+                        $response['error'] = 'NoClientWithId';
+                        $response['errorMessage'] = 'NoClientWithId';
                     }
                 } else {
                     $response['status'] = 'error';
-                    $response['error'] = 'NoClientWithId';
-                    $response['errorMessage'] = 'NoClientWithId';
+                    $response['error'] = 'invalidData';
+                    $response['errorMessage'] = 'invalidData';
                 }
             } else {
                 $response['status'] = 'error';
-                $response['error'] = 'invalidData';
-                $response['errorMessage'] = 'invalidData';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
             }
             echo json_encode($response);
         } catch (Exception $ex) {
@@ -212,14 +225,19 @@ class ClientsController extends Controller
     public function actionGetAllArray()
     {
         try {
-            $clientsArray = array();
-            $clients = Clients::getAll();
-            foreach ($clients as $client)
-                $clientsArray[] = HelperFunctions::modelToArray($client);
+            if ($this->administrator) {
+                $clientsArray = array();
+                $clients = Clients::getAll();
+                foreach ($clients as $client)
+                    $clientsArray[] = $client->toArray();
 
-            $response['clients'] = $clientsArray;
-            $response['status'] = 'ok';
-
+                $response['clients'] = $clientsArray;
+                $response['status'] = 'ok';
+            } else {
+                $response['status'] = 'error';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
+            }
             echo json_encode($response);
         } catch (Exception $ex) {
             Errors::log('Error en ClientsController/actionGetAllArray', $ex->getMessage(), '');
@@ -234,23 +252,29 @@ class ClientsController extends Controller
     {
         $response = array();
         try {
-            if (isset($_POST['id']) && is_numeric($_POST['id'])) {
-                $client = Clients::get($_POST['id']);
-                if (isset($client->id)) {
-                    $client->deleteClient();
-                    $response['status'] = 'ok';
-                    $response['message'] = Clients::getModelName('singular') . ' eliminado.';
+            if ($this->administrator) {
+                if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+                    $client = Clients::get($_POST['id']);
+                    if (isset($client->id)) {
+                        $client->deleteClient();
+                        $response['status'] = 'ok';
+                        $response['message'] = Clients::getModelName('singular') . ' eliminado.';
 
-                    Logs::log('Se eliminó el Client ' . $_POST['id']);
+                        Logs::log('Se eliminó el Client ' . $_POST['id']);
+                    } else {
+                        $response['status'] = 'error';
+                        $response['error'] = 'noClientWithId';
+                        $response['errorMessage'] = 'noClientWithId';
+                    }
                 } else {
                     $response['status'] = 'error';
-                    $response['error'] = 'noClientWithId';
-                    $response['errorMessage'] = 'noClientWithId';
+                    $response['error'] = 'noData';
+                    $response['errorMessage'] = 'noData';
                 }
             } else {
                 $response['status'] = 'error';
-                $response['error'] = 'noData';
-                $response['errorMessage'] = 'noData';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
             }
             echo json_encode($response);
         } catch (Exception $ex) {

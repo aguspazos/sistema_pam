@@ -130,7 +130,8 @@ class Alerts extends CActiveRecord
             $alertEmails = Yii::app()->params['emails']['alerts'];
             $subject = 'Alerta en sitio '.Yii::app()->params['domain'];
             $body = $alert->title.'<br/><br/><br/>'.$alert->message.'<br/><br/><br/>'.$alert->aux.'<br/><br/><br/>'.$alert->date;
-            foreach($alertEmails as $email)
-                EmailHelper::sendEmail($subject, $body, $email);
+            foreach($alertEmails as $email){
+				//EmailHelper::sendEmail($subject, $body, $email);
+			}
         }
 }
