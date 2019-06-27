@@ -1,0 +1,102 @@
+/*
+Template Name: Material Pro Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+
+$md-darkblue: (
+  50: #e7e8eb,
+  100: #c3c6ce,
+  200: #9ca0ae,
+  300: #747a8d,
+  400: #565e74,
+  500: #38415c,
+  600: #323b54,
+  700: #2b324a,
+  800: #242a41,
+  900: #171c30,
+  A100: #738dff,
+  A200: #4064ff,
+  A400: #0d3bff,
+  A700: #002ef2,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff
+  )
+);
+
+$md-darkgreen: (
+  50: #e5f1f0,
+  100: #bedbd8,
+  200: #93c3bf,
+  300: #68aba5,
+  400: #479991,
+  500: #27877e,
+  600: #237f76,
+  700: #1d746b,
+  800: #176a61,
+  900: #0e574e,
+  A100: #8dffef,
+  A200: #5affe9,
+  A400: #27ffe2,
+  A700: #0effde,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$dark-blue: mat-palette($md-darkblue);
+$dark-green: mat-palette($md-darkgreen);
+
+//$dark-blue: mat-palette($mat-indigo, #38415c, #636c89, #0f1b32);
+//$dark-green: mat-palette($mat-indigo, #60b188, #91e3b8, #2e815b);
+
+$blue-app-primary: mat-palette($mat-indigo, 600);
+$blue-app-accent: mat-palette($mat-blue, A200, A100, A400);
+$blue-app-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$blue-app-theme: mat-light-theme($dark-blue, $dark-green, $blue-app-warn);
+$themecolor: #343c3e;
+$themecolor-alt: #343c3e;
+$white: #fff;
+#snav {
+  .mat-nav-list .mat-list-item {
+    .mat-list-item-content {
+      &:hover {
+        > a {
+          color: $themecolor;
+        }
+      }
+    }
+    &.selected > .mat-list-item-content > a {
+      background: $themecolor-alt;
+      color: $white;
+    }
+  }
+}
