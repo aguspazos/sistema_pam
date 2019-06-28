@@ -5,3 +5,4 @@ export * from "./BoundsState/BoundsState";
 export * from "./RumblingState/RumblingState";
 export * from "./UvState/UvState";
 export * from "./StateChange/StateChange";
+export * from "./Delivery/Delivery";

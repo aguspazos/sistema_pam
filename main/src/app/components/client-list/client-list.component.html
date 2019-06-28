@@ -1,3 +1,89 @@
-<p>
-  client-list works!
-</p>
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Clientes</h2>
+    <button color="primary" mat-raised-button (click)="showCreate()">
+      Crear Cliente
+    </button>
+  </div>
+  <div class="tableDiv">
+    <mat-table
+      #tableClients
+      [dataSource]="dataSource"
+      matSort
+      matSortActive="nombre"
+      matSortDirection="asc"
+    >
+      <ng-container cdkColumnDef="name">
+        <mat-header-cell *cdkHeaderCellDef mat-sort-header>
+          Nombre
+        </mat-header-cell>
+        <mat-cell *cdkCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="phone">
+        <mat-header-cell *cdkHeaderCellDef mat-sort-header>
+          Teléfono
+        </mat-header-cell>
+        <mat-cell *cdkCellDef="let element">
+          {{ element.phone }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="delete">
+        <mat-header-cell *cdkHeaderCellDef> </mat-header-cell>
+        <mat-cell
+          *cdkCellDef="let element"
+          fxLayout="row"
+          fxLayoutAlign="end center"
+        >
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="appMenu"
+            (click)="$event.stopPropagation()"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item (click)="editClient(element)">
+              <mat-icon>edit</mat-icon>Editar
+            </button>
+            <button mat-menu-item (click)="openDeleteDialog(element)">
+              <mat-icon>delete</mat-icon>Eliminar
+            </button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <mat-row
+        *cdkRowDef="let row; columns: displayedColumns; let rowInd = index"
+        [cdkDetailRow]="row"
+        [cdkDetailRowTpl]="tpl"
+        (click)="watchClient(row)"
+        [ngClass]="{ 'detalles-row': detallesRow == rowInd }"
+      >
+      </mat-row>
+    </mat-table>
+
+    <div
+      class="table-no-results"
+      [style.display]="dataSource?.renderedData.length == 0 ? '' : 'none'"
+    >
+      No hay clientes.
+    </div>
+
+    <footer [hidden]="clientsLength <= 5">
+      <mat-paginator
+        #paginator
+        [length]="clientsLength"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        [itemsPerPageLabel]="'Listas por página'"
+      >
+      </mat-paginator>
+    </footer>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import { MyProfileComponent } from "./components/my-profile/my-profile.component
 import { LoginComponent } from "./components/login/login.component";
 import { ClientListComponent } from "./components/client-list/client-list.component";
 import { ProviderListComponent } from "./components/provider-list/provider-list.component";
+import { ClientLayoutComponent } from "./components/client-layout/client-layout.component";
 
 export const AppRoutes: Routes = [
   {
@@ -41,7 +42,7 @@ export const AppRoutes: Routes = [
       },
       {
         path: "contactos/clientes",
-        component: ClientListComponent
+        component: ClientLayoutComponent
       },
       {
         path: "contactos/proveedores",

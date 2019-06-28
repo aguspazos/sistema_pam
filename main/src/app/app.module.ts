@@ -34,6 +34,9 @@ import { LoginComponent } from "./components/login/login.component";
 import { AlertService } from "./services";
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { ProviderListComponent } from './components/provider-list/provider-list.component';
+import { ClientLayoutComponent } from './components/client-layout/client-layout.component';
+import { ClientCreateComponent } from './components/client-create/client-create.component';
+import { ClientEditComponent } from './components/client-edit/client-edit.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -59,7 +62,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MyProfileComponent,
     LoginComponent,
     ClientListComponent,
-    ProviderListComponent
+    ProviderListComponent,
+    ClientLayoutComponent,
+    ClientCreateComponent,
+    ClientEditComponent
   ],
   imports: [
     BrowserModule,

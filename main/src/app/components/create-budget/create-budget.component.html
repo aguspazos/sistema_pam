@@ -7,328 +7,299 @@
       <mat-card-content>
         <mat-card-title>Nuevo Trabajo</mat-card-title>
         <mat-horizontal-stepper [linear]="false">
-          <mat-step [stepControl]="firstFormGroup">
-            <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>Datos Básicos</ng-template>
+          <mat-step>
+            <ng-template matStepLabel>Datos Básicos</ng-template>
 
-              <div fxLayout="row wrap">
-                <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
-                  Tipo de Impresión
-                  <mat-radio-group>
-                    <mat-radio-button
-                      color="primary"
-                      value="digital"
-                      class="m-r-10"
-                      >Digital</mat-radio-button
-                    >
-                    <mat-radio-button
-                      color="primary"
-                      value="offset"
-                      class="m-r-10"
-                      >Offset</mat-radio-button
-                    >
-                  </mat-radio-group>
-                </div>
-
-                <!-- column -->
-                <div fxFlex.gt-md="100" fxFlex="100">
-                  <mat-form-field>
-                    <input matInput placeholder="Tamaño Papel" />
-                  </mat-form-field>
-                </div>
-                <!-- column -->
-                <div fxFlex.gt-sm="100" fxFlex="100">
-                  <mat-form-field>
-                    <input matInput placeholder="Tipo Papel" />
-                  </mat-form-field>
-                </div>
-                <!-- column -->
-                <div fxFlex.gt-sm="100" fxFlex="100">
-                  <mat-form-field>
-                    <input matInput placeholder="Cantidad de Impresiones" />
-                  </mat-form-field>
-                </div>
-
-                <!-- column -->
-                <div fxFlex.gt-sm="100" fxFlex="100" class="m-b-20">
-                  <input
-                    class="form-control b-b"
-                    placeholder="Archivo"
-                    type="file"
-                  />
-                </div>
-
-                <!-- column -->
-                <div fxFlex.gt-sm="100" fxFlex="100">
-                  <mat-form-field>
-                    <textarea matInput placeholder="Notas"></textarea>
-                  </mat-form-field>
-                </div>
+            <div fxLayout="row wrap">
+              <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                Tipo de Impresión
+                <mat-radio-group [(ngModel)]="printTypeGroup">
+                  <mat-radio-button
+                    *ngFor="let opt of typeOptions"
+                    [value]="opt"
+                    (change)="printTypeChange($event)"
+                    color="primary"
+                    value="digital"
+                    class="m-r-10"
+                    >{{ opt }}</mat-radio-button
+                  >
+                </mat-radio-group>
               </div>
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>Terminaciones</ng-template>
 
-              <mat-vertical-stepper [linear]="false">
-                <mat-step [stepControl]="laminationFormGroup">
-                  <form [formGroup]="laminationFormGroup">
-                    <ng-template matStepLabel>Laminado</ng-template>
-                    <div fxLayout="row wrap">
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        Tiene Laminado
-                        <mat-radio-group (change)="laminatedSelectionChange()">
-                          <mat-radio-button
-                            color="primary"
-                            value="true"
-                            class="m-r-10"
-                            >Si</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="false"
-                            class="m-r-10"
-                            >No</mat-radio-button
-                          >
-                        </mat-radio-group>
-                      </div>
-                    </div>
-                    <div
-                      fxLayout="row wrap"
-                      [style.display]="hasLamination ? '' : 'none'"
-                    >
-                      <mat-form-field>
-                        <input matInput placeholder="Tiraje" required />
-                      </mat-form-field>
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        Tipo de Laminado
-                      </div>
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        <mat-radio-group>
-                          <mat-radio-button
-                            color="primary"
-                            value="mate"
-                            class="m-r-10"
-                            >Mate</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="glow"
-                            class="m-r-10"
-                            >Brillo</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="softTouch"
-                            class="m-r-10"
-                            >Soft Touch</mat-radio-button
-                          >
-                        </mat-radio-group>
-                      </div>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step [stepControl]="dieCuttingFormGroup">
-                  <form [formGroup]="dieCuttingFormGroup">
-                    <ng-template matStepLabel>Troquelado</ng-template>
-                    <div fxLayout="row wrap">
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        Tiene Troquelado
-                        <mat-radio-group (change)="dieCuttingSelectionChange()">
-                          <mat-radio-button
-                            color="primary"
-                            value="true"
-                            class="m-r-10"
-                            >Si</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="false"
-                            class="m-r-10"
-                            >No</mat-radio-button
-                          >
-                        </mat-radio-group>
-                      </div>
-                    </div>
-                    <div
-                      fxLayout="row wrap"
-                      [style.display]="hasDieCutting ? '' : 'none'"
-                    >
-                      <mat-form-field>
-                        <input matInput placeholder="Forma" required />
-                      </mat-form-field>
-                      <mat-form-field>
-                        <input matInput placeholder="Cantidad" required />
-                      </mat-form-field>
-                      <div fxFlex.gt-sm="100" fxFlex="100">
-                        <mat-form-field>
-                          <textarea matInput placeholder="Detalles"></textarea>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step>
-                  <form [formGroup]="uvFormGroup">
-                    <ng-template matStepLabel>Terminación UV</ng-template>
-                    <div fxLayout="row wrap">
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        Tiene Terminación Uv
-                        <mat-radio-group (change)="uvSelectionChange()">
-                          <mat-radio-button
-                            color="primary"
-                            value="true"
-                            class="m-r-10"
-                            >Si</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="false"
-                            class="m-r-10"
-                            >No</mat-radio-button
-                          >
-                        </mat-radio-group>
-                      </div>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step [stepControl]="bindingFormGroup">
-                  <form [formGroup]="bindingFormGroup">
-                    <ng-template matStepLabel>Encuadernación</ng-template>
-                    <div fxLayout="row wrap">
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        Tiene Encuadernación
-                        <mat-radio-group (change)="bindingSelectionChange()">
-                          <mat-radio-button
-                            color="primary"
-                            value="true"
-                            class="m-r-10"
-                            >Si</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="false"
-                            class="m-r-10"
-                            >No</mat-radio-button
-                          >
-                        </mat-radio-group>
-                      </div>
-                    </div>
-                    <div
-                      fxLayout="row wrap"
-                      [style.display]="hasBinding ? '' : 'none'"
-                    >
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        Tipo de Encuadernación
-                      </div>
-                      <div
-                        fxFlex.gt-sm="100"
-                        fxFlex="100"
-                        class="m-t-20 m-b-20"
-                      >
-                        <mat-radio-group>
-                          <mat-radio-button
-                            color="primary"
-                            value="intercalate"
-                            class="m-r-10"
-                            >Intercalado</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="sew"
-                            class="m-r-10"
-                            >Cocido</mat-radio-button
-                          >
-                          <mat-radio-button
-                            color="primary"
-                            value="others"
-                            class="m-r-10"
-                            >Otros</mat-radio-button
-                          >
-                        </mat-radio-group>
-                      </div>
-                      <div fxFlex.gt-sm="100" fxFlex="100">
-                        <mat-form-field>
-                          <textarea matInput placeholder="Otros"></textarea>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                  </form>
-                </mat-step>
-              </mat-vertical-stepper>
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="thirdFormGroup">
-            <form [formGroup]="thirdFormGroup">
-              <ng-template matStepLabel>Datos Entrega</ng-template>
-              <div fxLayout="row wrap">
-                <!-- column -->
-                <div fxFlex.gt-sm="85" fxFlex="85">
-                  <mat-form-field>
-                    <mat-select placeholder="Cliente">
-                      <mat-option value="option">Cliente 1</mat-option>
-                      <mat-option value="option">Cliente 2</mat-option>
-                      <mat-option value="option">Cliente 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <mat-form-field fxFlex.gt-sm="100" fxFlex="100">
+              <!-- column -->
+              <div fxFlex.gt-md="100" fxFlex="100">
+                <mat-form-field>
+                  <input
+                    [(ngModel)]="budget.paper_size"
+                    matInput
+                    placeholder="Tamaño Papel"
+                  />
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100">
+                <mat-form-field>
+                  <input
+                    [(ngModel)]="budget.paper_type_id"
+                    matInput
+                    placeholder="Tipo Papel"
+                  />
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100">
+                <mat-form-field>
                   <input
                     matInput
-                    [ngModelOptions]="{ standalone: true }"
-                    [ngModel]="fecha | date: 'MM-dd-yyyy'"
-                    (ngModelChange)="fecha = $event"
-                    [matDatepicker]="picker7"
-                    placeholder="Fecha Entrega"
+                    [(ngModel)]="budget.prints_amount"
+                    placeholder="Cantidad de Impresiones"
                   />
-                  <mat-datepicker-toggle
-                    matSuffix
-                    [for]="picker7"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker touchUi="true" #picker7></mat-datepicker>
                 </mat-form-field>
-                <!-- column -->
-                <div fxFlex.gt-sm="100" fxFlex="100">
-                  <button
-                    style="float:right"
-                    (click)="saveBudget()"
-                    mat-raised-button
-                    color="primary"
-                  >
-                    Guardar
-                  </button>
-                </div>
               </div>
-            </form>
+
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100" class="m-b-20">
+                <input
+                  class="form-control b-b"
+                  placeholder="Archivo"
+                  type="file"
+                />
+              </div>
+
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100">
+                <mat-form-field>
+                  <textarea
+                    [(ngModel)]="budget.notes"
+                    matInput
+                    placeholder="Notas"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Terminaciones</ng-template>
+
+            <mat-vertical-stepper [linear]="false">
+              <mat-step>
+                <ng-template matStepLabel>Laminado</ng-template>
+                <div fxLayout="row wrap">
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tiene Laminado
+                    <mat-radio-group (change)="laminatedSelectionChange()">
+                      <mat-radio-button
+                        color="primary"
+                        value="true"
+                        class="m-r-10"
+                        >Si</mat-radio-button
+                      >
+                      <mat-radio-button
+                        color="primary"
+                        value="false"
+                        class="m-r-10"
+                        >No</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div
+                  fxLayout="row wrap"
+                  [style.display]="hasLamination ? '' : 'none'"
+                >
+                  <mat-form-field>
+                    <input
+                      [(ngModel)]="lamination.printing"
+                      matInput
+                      placeholder="Tiraje"
+                      required
+                    />
+                  </mat-form-field>
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tipo de Laminado
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    <mat-radio-group>
+                      <mat-radio-button
+                        color="primary"
+                        *ngFor="let lOpt of laminationOptions"
+                        [value]="lOpt"
+                        (change)="laminationOptionChange($event)"
+                        value="mate"
+                        class="m-r-10"
+                        >{{ lOpt }}</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Troquelado</ng-template>
+                <div fxLayout="row wrap">
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tiene Troquelado
+                    <mat-radio-group (change)="dieCuttingSelectionChange()">
+                      <mat-radio-button
+                        color="primary"
+                        value="true"
+                        class="m-r-10"
+                        >Si</mat-radio-button
+                      >
+                      <mat-radio-button
+                        color="primary"
+                        value="false"
+                        class="m-r-10"
+                        >No</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div
+                  fxLayout="row wrap"
+                  [style.display]="hasDieCutting ? '' : 'none'"
+                >
+                  <mat-form-field>
+                    <input
+                      matInput
+                      [(ngModel)]="rumbling.shape"
+                      placeholder="Forma"
+                      required
+                    />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input
+                      matInput
+                      [(ngModel)]="rumbling.amount"
+                      placeholder="Cantidad"
+                      required
+                    />
+                  </mat-form-field>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <textarea
+                        matInput
+                        [(ngModel)]="rumbling.detail"
+                        placeholder="Detalles"
+                      ></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Terminación UV</ng-template>
+                <div fxLayout="row wrap">
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tiene Terminación Uv
+                    <mat-radio-group (change)="uvSelectionChange()">
+                      <mat-radio-button
+                        color="primary"
+                        value="true"
+                        class="m-r-10"
+                        >Si</mat-radio-button
+                      >
+                      <mat-radio-button
+                        color="primary"
+                        value="false"
+                        class="m-r-10"
+                        >No</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Encuadernación</ng-template>
+                <div fxLayout="row wrap">
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tiene Encuadernación
+                    <mat-radio-group (change)="bindingSelectionChange()">
+                      <mat-radio-button
+                        color="primary"
+                        value="true"
+                        class="m-r-10"
+                        >Si</mat-radio-button
+                      >
+                      <mat-radio-button
+                        color="primary"
+                        value="false"
+                        class="m-r-10"
+                        >No</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div
+                  fxLayout="row wrap"
+                  [style.display]="hasBinding ? '' : 'none'"
+                >
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tipo de Encuadernación
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    <mat-radio-group>
+                      <mat-radio-button
+                        color="primary"
+                        *ngFor="let bOpt of boundOptions"
+                        [value]="bOpt"
+                        (change)="bindingOptionChange($event)"
+                        class="m-r-10"
+                        >{{ bOpt }}</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <textarea
+                        matInput
+                        [(ngModel)]="bound.others"
+                        placeholder="Otros"
+                      ></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-step>
+            </mat-vertical-stepper>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Datos Entrega</ng-template>
+            <div fxLayout="row wrap">
+              <!-- column -->
+              <div fxFlex.gt-sm="85" fxFlex="85">
+                <mat-form-field>
+                  <mat-select placeholder="Cliente">
+                    <mat-option value="option">Cliente 1</mat-option>
+                    <mat-option value="option">Cliente 2</mat-option>
+                    <mat-option value="option">Cliente 3</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <mat-form-field fxFlex.gt-sm="100" fxFlex="100">
+                <input
+                  matInput
+                  [ngModelOptions]="{ standalone: true }"
+                  [ngModel]="fecha | date: 'MM-dd-yyyy'"
+                  (ngModelChange)="fecha = $event"
+                  [matDatepicker]="picker7"
+                  placeholder="Fecha Entrega"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker7"
+                ></mat-datepicker-toggle>
+                <mat-datepicker touchUi="true" #picker7></mat-datepicker>
+              </mat-form-field>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100">
+                <button
+                  style="float:right"
+                  (click)="saveBudget()"
+                  mat-raised-button
+                  color="primary"
+                >
+                  Guardar
+                </button>
+              </div>
+            </div>
           </mat-step>
         </mat-horizontal-stepper>
       </mat-card-content>

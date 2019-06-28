@@ -1,1 +1,4 @@
-export class PackageOrder {}
+export class RumblingState {
+  public RumblingState() {}
+  id?: number;
+}
