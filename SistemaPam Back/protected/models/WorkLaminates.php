@@ -12,6 +12,7 @@
  * @property datetime $updated_on
  * @property boolean $deleted
  * @property integer $admin_id
+ * @property string $notes
  */
  
 class WorkLaminates extends CActiveRecord{
@@ -195,6 +196,7 @@ class WorkLaminates extends CActiveRecord{
         public function toArray($withNotes = false){
             $me = array();
             $me['printing'] = $this->printing;
+            $me['notes'] = $this->notes;
             $me['type'] = $this->type;
 
             if($withNotes){

@@ -12,6 +12,7 @@
  * @property datetime $created_on
  * @property datetime $updated_on
  * @property boolean $deleted
+ * @property string $notes
  * @property integer $admin_id
  */
  
@@ -203,6 +204,7 @@ class WorkRumblings extends CActiveRecord{
             $me['shape'] = $this->shape;
             $me['amount'] = $this->amount;
             $me['detail'] = $this->detail;
+            $me['notes'] = $this->notes;
             if($withNotes){
                 $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$WITH_RUMBLING);
                 foreach($workStatusChanges as $workStatusChange){

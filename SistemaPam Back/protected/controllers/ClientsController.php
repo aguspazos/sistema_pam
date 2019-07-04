@@ -18,6 +18,7 @@ class ClientsController extends Controller
         );
     }
 
+
     /**
      * Specifies the access control rules.
      * This method is used by the 'accessControl' filter.
@@ -106,9 +107,9 @@ class ClientsController extends Controller
         try {
             if ($this->administrator) {
                 $clientArray = $_POST;
-                if (isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['code'])) {
+                if (isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['mail'])) {
 
-                    $client = Clients::create($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['code']);
+                    $client = Clients::create($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['mail']);
                     if (!$client->hasErrors()) {
                         $response['status'] = 'ok';
                         $response['message'] = Clients::getModelName('singular') . ' agregado.';
@@ -146,11 +147,11 @@ class ClientsController extends Controller
         try {
             if ($this->administrator) {
                 $clientArray = $_POST;
-                if (isset($clientArray['id']) && is_numeric($clientArray['id']) && isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['code'])) {
+                if (isset($clientArray['id']) && is_numeric($clientArray['id']) && isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['mail'])) {
                     $client = Clients::get($clientArray['id']);
                     if (isset($client->id)) {
 
-                        $client->updateAttributes($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['code']);
+                        $client->updateAttributes($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['mail']);
                         if (!$client->hasErrors()) {
 
 
@@ -224,6 +225,7 @@ class ClientsController extends Controller
 
     public function actionGetAllArray()
     {
+
         try {
             if ($this->administrator) {
                 $clientsArray = array();

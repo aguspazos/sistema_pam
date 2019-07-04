@@ -1,3 +1,155 @@
-<p>
-  admin-budgets works!
-</p>
+<div
+  fxLayout="row"
+  *ngFor="let work of works"
+  fxLayoutAlign="space-around center"
+>
+  <div class="work-card" fxFlex="90" fxFlex.sm="100" fxFlex.xs="100">
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="title">Trabajo para: {{ work.client.name }}</div>
+      <div class="title">Fecha de entrega: {{ work.due_date }}</div>
+    </div>
+
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="normal-text">Notas: {{ work.notes }}</div>
+    </div>
+
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="title">Estado : {{ work.next_status_name }}</div>
+    </div>
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <mat-vertical-stepper style="width:100%" [linear]="true">
+        <mat-step>
+          <ng-template matStepLabel>Impresión</ng-template>
+
+          <div fxLayout="row wrap">
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Tipo de impresión: {{ work.print_type_id }}
+              </div>
+            </div>
+
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Cantidad de impresiones: {{ work.prints_amount }}
+              </div>
+            </div>
+
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Tamaño de papel: {{ work.paper_size }}
+              </div>
+            </div>
+
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Tipo de papel: {{ work.paper_type_id }}
+              </div>
+            </div>
+
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="work.work_prints.notes"
+                placeholder="Notas"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-step>
+
+        <mat-step *ngIf="work.work_laminates != undefined">
+          <ng-template matStepLabel>Laminado</ng-template>
+
+          <div fxLayout="row wrap">
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="Title">
+                Tipo de Laminado: {{ work.work_laminates.type }}
+              </div>
+            </div>
+
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Tiraje: {{ work.work_laminates.printing }}
+              </div>
+            </div>
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="work.work_laminates.notes"
+                placeholder="Notas"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-step>
+
+        <mat-step *ngIf="work.work_rumblings != undefined">
+          <ng-template matStepLabel>Troquelado</ng-template>
+
+          <div fxLayout="row wrap">
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="Title">Forma: {{ work.work_rumblings.shape }}</div>
+            </div>
+
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Cantidad: {{ work.work_rumblings.quantity }}
+              </div>
+            </div>
+
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="normal-text">
+                Detalles: {{ work.work_rumblings.details }}
+              </div>
+            </div>
+
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="work.work_rumblings.notes"
+                placeholder="Notas"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-step>
+
+        <mat-step *ngIf="work.work_uvs != undefined">
+          <ng-template matStepLabel>UV</ng-template>
+
+          <div fxLayout="row wrap">
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="work.work_uvs.notes"
+                placeholder="Notas"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-step>
+
+        <mat-step *ngIf="work.work_bounds != undefined">
+          <ng-template matStepLabel>Encuadernación</ng-template>
+
+          <div fxLayout="row wrap">
+            <div class="card-row" fxLayoutAlign="space-between center">
+              <div class="Title">
+                Tipo de encuadernación: {{ work.work_bounds.type }}
+              </div>
+            </div>
+
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="work.work_bounds.notes"
+                placeholder="Notas"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@
  * @property datetime $created_on
  * @property datetime $updated_on
  * @property boolean $deleted
+ * @property string $notes
  * @property integer $admin_id
  */
  
@@ -150,7 +151,7 @@ class WorkDelivers extends CActiveRecord{
             $workDeliver = new WorkDelivers;
             $workDeliver->work_id = $work_id;
             $workDeliver->client_id = $client_id;
-            $workDeliver->deliver_date = HelperFunctions::getFormattedDate($deliver_date);
+            $workDeliver->deliver_date = HelperFunctions::getDate();// HelperFunctions::getFormattedDate($deliver_date);
             $workDeliver->created_on = HelperFunctions::getDate();
             $workDeliver->updated_on = HelperFunctions::getDate();
             $workDeliver->deleted = 0;

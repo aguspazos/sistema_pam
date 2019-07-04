@@ -39,14 +39,14 @@ const MENUITEMS = [
   },
   {
     state: "presupuestos",
-    name: "Presupuestos",
+    name: "Trabajos",
     type: "sub",
     icon: "av_timer",
     children: [
-      { state: "crear", name: "Crear Presupuesto", type: "link" },
+      { state: "crear", name: "Crear Orden", type: "link" },
       {
         state: "listado",
-        name: "Presupuestos Activos",
+        name: "Trabajos Activos",
         type: "link"
       },
       { state: "envios", name: "Envios", type: "link" },
@@ -65,10 +65,7 @@ const MENUITEMS = [
     name: "Contactos",
     type: "sub",
     icon: "av_timer",
-    children: [
-      { state: "clientes", name: "Clientes", type: "link" },
-      { state: "proveedores", name: "Proveedores", type: "link" }
-    ]
+    children: [{ state: "clientes", name: "Clientes", type: "link" }]
   },
 
   {

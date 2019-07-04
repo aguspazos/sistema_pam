@@ -1,3 +1,112 @@
-<p>
-  active-budget-list works!
-</p>
+<div
+  fxLayout="row"
+  *ngFor="let work of works"
+  fxLayoutAlign="space-around center"
+>
+  <div class="work-card" fxFlex="90" fxFlex.sm="100" fxFlex.xs="100">
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="title">Trabajo para: {{ work.client.name }}</div>
+      <div class="title">Fecha de entrega: {{ work.due_date }}</div>
+    </div>
+
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="normal-text">Notas: {{ work.notes }}</div>
+    </div>
+
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="title">Estado : {{ work.next_status_name }}</div>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="work.next_status_name == 'Para Imprimir'">
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">
+          Tipo de impresión: {{ work.print_type_id }}
+        </div>
+      </div>
+
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">
+          Cantidad de impresiones: {{ work.prints_amount }}
+        </div>
+      </div>
+
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">Tamaño de papel: {{ work.paper_size }}</div>
+      </div>
+
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">Tipo de papel: {{ work.paper_type_id }}</div>
+      </div>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="notes" placeholder="Notas" required />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="work.next_status_name == 'Para Laminar'">
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="Title">
+          Tipo de Laminado: {{ work.work_laminates.type }}
+        </div>
+      </div>
+
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">
+          Tiraje: {{ work.work_laminates.printing }}
+        </div>
+      </div>
+      <mat-form-field>
+        <input matInput [(ngModel)]="notes" placeholder="Notas" required />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="work.next_status_name == 'Para Troquelar'">
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="Title">Forma: {{ work.work_rumblings.shape }}</div>
+      </div>
+
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">
+          Cantidad: {{ work.work_rumblings.quantity }}
+        </div>
+      </div>
+
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="normal-text">
+          Detalles: {{ work.work_rumblings.details }}
+        </div>
+      </div>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="notes" placeholder="Notas" required />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="work.next_status_name == 'Para aplicar UV'">
+      <mat-form-field>
+        <input matInput [(ngModel)]="notes" placeholder="Notas" required />
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row wrap"
+      *ngIf="work.next_status_name == 'Para Encuadernar'"
+    >
+      <div class="card-row" fxLayoutAlign="space-between center">
+        <div class="Title">
+          Tipo de encuadernación: {{ work.work_bounds.type }}
+        </div>
+      </div>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="notes" placeholder="Notas" required />
+      </mat-form-field>
+    </div>
+
+    <div class="card-row" fxLayoutAlign="end center">
+      <button (click)="advance(work)" mat-raised-button color="primary">
+        Avanzar
+      </button>
+    </div>
+  </div>
+</div>

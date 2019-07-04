@@ -10,7 +10,9 @@
  * @property datetime $updated_on
  * @property boolean $deleted
  * @property integer $admin_id
+ * @property string $notes
  */
+
  
 class WorkUvs extends CActiveRecord{
     
@@ -179,6 +181,19 @@ class WorkUvs extends CActiveRecord{
                 return false;
             }
         }
+
+    public function toArray($withNotes = false){
+        $me = array();
+        $me['id'] = $this->id;
+        $me['notes'] = $this->notes;
+        if($withNotes){
+            $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$WITH_LAMINATE);
+            foreach($workStatusChanges as $workStatusChange){
+                $me['notes'][] = $workStatusChange->notes;
+            }
+        }
+        return $me;
+    }
             
         
             

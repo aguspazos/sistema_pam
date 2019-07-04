@@ -24,26 +24,26 @@ class WorkStatuses
             return 'Empezado';
             break;
             case self::$PRINTED:
-            return 'Impreso';
+            return 'Para Imprimir';
             break;
             case self::$WITH_LAMINATE:
-                return 'Laminado';
+                return 'Para Laminar';
                 break;
             case self::$WITH_RUMBLING:
-                return 'Troquelado';
+                return 'Para Troquelar';
                 break;
             case self::$WITH_UV:
-                return 'UV';
+                return 'Para aplicar UV';
 
                 break;
             case self::$BOUNDED:
-                return 'Encuadernado';
+                return 'Para Encuadernar';
                 break;
             case self::$FINISHED:
-                return 'Terminado';
+                return 'Para Entregar';
                 break;
             case self::$DELIVERED:
-                return 'Enviado';
+                return 'Entregado';
                 break;
         }
         return false;

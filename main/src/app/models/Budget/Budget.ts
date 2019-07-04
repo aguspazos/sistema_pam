@@ -17,7 +17,7 @@ export class Budget {
   due_date?: Date;
   current_work_status_id?: number;
   current_status_type_id?: number;
-
+  token?: string;
   work_prints?: CutState;
   work_laminates?: LaminatedState;
   work_rumblings?: RumblingState;
@@ -25,6 +25,8 @@ export class Budget {
   stateChanges?: StateChange[];
   work_uvs?: UvState;
   work_delivers?: Delivery;
+  client?: Client;
+  next_status_name?: string;
 
   public Budget() {
     this.work_prints = new CutState();

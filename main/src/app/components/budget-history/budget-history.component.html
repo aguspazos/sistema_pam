@@ -1,3 +1,26 @@
-<p>
-  budget-history works!
-</p>
+<div
+  fxLayout="row"
+  *ngFor="let work of works"
+  fxLayoutAlign="space-around center"
+>
+  <div class="work-card" fxFlex="90" fxFlex.sm="100" fxFlex.xs="100">
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="title">Trabajo para: {{ work.client.name }}</div>
+      <div class="title">Fecha de entrega: {{ work.due_date }}</div>
+    </div>
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="normal-text">
+        Descripción: {{ work.prints_amount }} hojas, Tipo de impresión:
+        {{ work.print_type_id }}, Tamaño de papel: {{ work.paper_size }}, Tipo
+        de papel: {{ work.paper_type_id }}
+      </div>
+    </div>
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="normal-text">Notas: {{ work.notes }}</div>
+    </div>
+
+    <div class="card-row" fxLayoutAlign="space-between center">
+      <div class="title">Estado Actual: Entregado</div>
+    </div>
+  </div>
+</div>

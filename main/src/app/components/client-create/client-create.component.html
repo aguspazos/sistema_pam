@@ -1,3 +1,28 @@
-<p>
-  client-create works!
-</p>
+<p></p>
+<div class="wrapper">
+  <h2>Nuevo Cliente</h2>
+  <div fxLayout="row wrap">
+    <mat-form-field>
+      <input [(ngModel)]="client.name" matInput placeholder="Nombre" />
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="client.phone" matInput placeholder="Teléfono" />
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="client.address" matInput placeholder="Dirección" />
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="client.mail" matInput placeholder="Email" />
+    </mat-form-field>
+    <div fxFlex.gt-sm="100" fxFlex="100">
+      <button
+        style="float:right; margin-bottom: 25px;"
+        (click)="saveClient()"
+        mat-raised-button
+        color="primary"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>

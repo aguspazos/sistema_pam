@@ -37,6 +37,9 @@ class Controller extends CController
 
     public function init() {
         try{
+            header("Access-Control-Allow-Origin: *");
+
+            header("Access-Control-Allow-Headers: Content-Type, origin");
             HelperFunctions::dumpToPost();
             $this->isMobile = HelperFunctions::isMobileBrowser();
             if(strlen(CookieHandler::get('main')) != 32)

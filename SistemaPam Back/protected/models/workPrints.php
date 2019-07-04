@@ -9,6 +9,7 @@
  * @property datetime $created_on
  * @property datetime $updated_on
  * @property boolean $deleted
+ * @property  string $notes
  * @property integer $admin_id
  */
  

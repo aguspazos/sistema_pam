@@ -1,4 +1,6 @@
 RewriteEngine on
+Header always append X-Frame-Options SAMEORIGIN
+
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f

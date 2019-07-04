@@ -25,7 +25,7 @@ export class ClientListComponent implements OnInit {
   clientsLength = 0;
 
   // Propiedades de ayuda
-  displayedColumns = ["name", "phone", "delete"];
+  displayedColumns = ["name", "phone", "address", "delete"];
   showCreateBusinessGroups = true;
   canEdit = false;
   constructor(
@@ -34,42 +34,28 @@ export class ClientListComponent implements OnInit {
     public dialog: MatDialog,
     private authenticationService: AuthenticationService
   ) {
-    this.loadGroups();
+    this.loadClients();
     this.clientsDatabase = clientsService.clientsDatabase;
-    if (
-      this.authenticationService.can("crearGruposDeEmpresa") ||
-      this.authenticationService.can("administradorEmpresa")
-    ) {
-      this.showCreateBusinessGroups = true;
-    } else {
-      this.showCreateBusinessGroups = false;
-    }
   }
 
-  loadGroups() {
-    this.groups = this.groupService.groupsDatabase.data;
-    this.groupsLength = this.groups.length;
+  loadClients() {
+    this.clients = this.clientsService.clientsDatabase.data;
+    this.clientsLength = this.clients.length;
   }
 
   ngOnInit() {
-    this.loadGroups();
-    this.groupService.dataChange.subscribe(changed => {
+    this.loadClients();
+    this.clientsService.dataChange.subscribe(changed => {
       if (changed) {
-        this.loadGroups();
+        this.loadClients();
       }
     });
     this.initializeVariables();
   }
 
   initializeVariables() {
-    if (
-      this.authenticationService.can("crearGruposDeEmpresa") ||
-      this.authenticationService.can("administradorEmpresa")
-    ) {
-      this.canEdit = true;
-    } else this.canEdit = false;
-    this.dataSource = new GroupsDataSource(
-      this.groupsDatabase,
+    this.dataSource = new ClientsDataSource(
+      this.clientsDatabase,
       this.paginator,
       this.sort
     );
@@ -80,27 +66,27 @@ export class ClientListComponent implements OnInit {
   }
 
   openDeleteDialog(groupToDelete): void {
-    const dialogRef = this.dialog.open(ConfirmDeleteGroupDialogComponent, {
+    /*  const dialogRef = this.dialog.open(ConfirmDeleteGroupDialogComponent, {
       width: "450px",
       data: { group: groupToDelete }
     });
     dialogRef.afterClosed().subscribe(result => {
       //	this.manageDeleteGroup(groupToDelete);
       //this.router.navigate(['/listas-venta']);
-    });
+    });*/
   }
 
   manageDeleteGroup(data: any): any {
     this.alertService.success("Grupo eliminado", "OK");
-    var deletedGroup = data.data as Grupo;
-    this.groupService.groupsDatabase.deleteGroup(deletedGroup);
-    this.groupService.deleteGroupFromLocalDb(deletedGroup);
-    this.groupService.dataChange.emit(true);
+    var deletedClient = data.data as Client;
+    this.clientsService.clientsDatabase.deleteClient(deletedClient);
+    this.clientsService.deleteClientFromLocalDb(deletedClient);
+    this.clientsService.dataChange.emit(true);
   }
 
-  deleteGroup(group) {
-    try {
-      this.groupService.deleteGroup(group).subscribe(
+  deleteClient(client) {
+    /*try {
+      this.clientsService.deleteClient(client).subscribe(
         data => {
           this.manageDeleteGroup(data);
         },
@@ -119,29 +105,29 @@ export class ClientListComponent implements OnInit {
       );
     } catch (e) {
       this.alertService.error("Ocurrió un error.", "OK");
-    }
+    }*/
   }
-  editGroup(group) {
-    this.groupService.showGroup = true;
-    this.groupService.showList = false;
-    this.groupService.showCreate = false;
-    this.groupService.groupToEdit = group;
-    this.groupService.isEditing = true;
+  editClient(client) {
+    this.clientsService.showClient = true;
+    this.clientsService.showList = false;
+    this.clientsService.showCreate = false;
+    this.clientsService.clientToEdit = client;
+    this.clientsService.isEditing = true;
   }
-  watchGroup(group) {
-    this.groupService.showGroup = true;
-    this.groupService.showList = false;
-    this.groupService.showCreate = false;
-    this.groupService.groupToEdit = group;
-    this.groupService.isEditing = false;
+  watchClient(client) {
+    this.clientsService.showClient = true;
+    this.clientsService.showList = false;
+    this.clientsService.showCreate = false;
+    this.clientsService.clientToEdit = client;
+    this.clientsService.isEditing = false;
     /*this.groupService.showGroupEdit = true;
 		
 		this.groupService.fromWatch = true;
 		this.groupService.dataChange.emit(true);*/
   }
   showCreate() {
-    this.groupService.showGroup = false;
-    this.groupService.showList = false;
-    this.groupService.showCreate = true;
+    this.clientsService.showClient = false;
+    this.clientsService.showList = false;
+    this.clientsService.showCreate = true;
   }
 }

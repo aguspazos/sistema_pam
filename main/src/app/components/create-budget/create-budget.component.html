@@ -87,14 +87,16 @@
                 <div fxLayout="row wrap">
                   <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
                     Tiene Laminado
-                    <mat-radio-group (change)="laminatedSelectionChange()">
+                    <mat-radio-group>
                       <mat-radio-button
+                        (change)="laminatedSelectionChange($event)"
                         color="primary"
                         value="true"
                         class="m-r-10"
                         >Si</mat-radio-button
                       >
                       <mat-radio-button
+                        (change)="laminatedSelectionChange($event)"
                         color="primary"
                         value="false"
                         class="m-r-10"
@@ -138,8 +140,9 @@
                 <div fxLayout="row wrap">
                   <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
                     Tiene Troquelado
-                    <mat-radio-group (change)="dieCuttingSelectionChange()">
+                    <mat-radio-group>
                       <mat-radio-button
+                        (change)="dieCuttingSelectionChange($event)"
                         color="primary"
                         value="true"
                         class="m-r-10"
@@ -190,14 +193,16 @@
                 <div fxLayout="row wrap">
                   <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
                     Tiene Terminación Uv
-                    <mat-radio-group (change)="uvSelectionChange()">
+                    <mat-radio-group>
                       <mat-radio-button
+                        (change)="uvSelectionChange($event)"
                         color="primary"
                         value="true"
                         class="m-r-10"
                         >Si</mat-radio-button
                       >
                       <mat-radio-button
+                        (change)="uvSelectionChange($event)"
                         color="primary"
                         value="false"
                         class="m-r-10"
@@ -212,15 +217,17 @@
                 <div fxLayout="row wrap">
                   <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
                     Tiene Encuadernación
-                    <mat-radio-group (change)="bindingSelectionChange()">
+                    <mat-radio-group>
                       <mat-radio-button
                         color="primary"
                         value="true"
                         class="m-r-10"
+                        (change)="bindingSelectionChange($event)"
                         >Si</mat-radio-button
                       >
                       <mat-radio-button
                         color="primary"
+                        (change)="bindingSelectionChange($event)"
                         value="false"
                         class="m-r-10"
                         >No</mat-radio-button
@@ -266,10 +273,12 @@
               <!-- column -->
               <div fxFlex.gt-sm="85" fxFlex="85">
                 <mat-form-field>
-                  <mat-select placeholder="Cliente">
-                    <mat-option value="option">Cliente 1</mat-option>
-                    <mat-option value="option">Cliente 2</mat-option>
-                    <mat-option value="option">Cliente 3</mat-option>
+                  <mat-select [(value)]="myClient" placeholder="Cliente">
+                    <mat-option
+                      *ngFor="let client of allClients"
+                      [value]="client"
+                      >{{ client.name }}</mat-option
+                    >
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -277,8 +286,7 @@
                 <input
                   matInput
                   [ngModelOptions]="{ standalone: true }"
-                  [ngModel]="fecha | date: 'MM-dd-yyyy'"
-                  (ngModelChange)="fecha = $event"
+                  [(ngModel)]="fecha"
                   [matDatepicker]="picker7"
                   placeholder="Fecha Entrega"
                 />
@@ -286,7 +294,12 @@
                   matSuffix
                   [for]="picker7"
                 ></mat-datepicker-toggle>
-                <mat-datepicker touchUi="true" #picker7></mat-datepicker>
+                <mat-datepicker
+                  (selectedChanged)="onDate($event)"
+                  touchUi="true"
+                  #picker7
+                >
+                </mat-datepicker>
               </mat-form-field>
               <!-- column -->
               <div fxFlex.gt-sm="100" fxFlex="100">

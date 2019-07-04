@@ -8,7 +8,7 @@
  * @property string $name
  * @property string $address
  * @property string $phone
- * @property string $code
+ * @property string $mail
  * @property datetime $created_on
  * @property datetime $updated_on
  * @property boolean $deleted
@@ -50,14 +50,14 @@ class Clients extends CActiveRecord{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, address, phone, code, created_on, updated_on, deleted, ', 'required'),
+			array('name, address, phone, mail, created_on, updated_on, deleted, ', 'required'),
                         array('deleted, ', 'boolean'),
                         array('created_on, updated_on, ', 'date', 'format'=>'yyyy-MM-dd hh:mm:ss'),
                         array('name', 'length', 'max'=>128),
                         array('address', 'length', 'max'=>256),
                         array('phone', 'length', 'max'=>32),
-                        array('code', 'length', 'max'=>128),
-                        array('id, name, address, phone, code, created_on, updated_on, deleted, ', 'safe', 'on'=>'search'),
+                        array('mail', 'length', 'max'=>128),
+                        array('id, name, address, phone, mail, created_on, updated_on, deleted, ', 'safe', 'on'=>'search'),
                         
 		);
 	}
@@ -81,7 +81,7 @@ class Clients extends CActiveRecord{
                         'name' => 'Name',
                         'address' => 'Address',
                         'phone' => 'Phone',
-                        'code' => 'Code',
+                        'mail' => 'Code',
                         'created_on' => 'CreatedOn',
                         'updated_on' => 'UpdatedOn',
                         'deleted' => 'Deleted',
@@ -118,7 +118,7 @@ class Clients extends CActiveRecord{
 		$criteria->compare('name',$this->name,true);
                 $criteria->compare('address',$this->address,true);
                 $criteria->compare('phone',$this->phone,true);
-                $criteria->compare('code',$this->code,true);
+                $criteria->compare('mail',$this->mail,true);
                 $criteria->compare('created_on',$this->created_on);
                 $criteria->compare('updated_on',$this->updated_on);
                 $criteria->compare('deleted',$this->deleted);
@@ -146,7 +146,7 @@ class Clients extends CActiveRecord{
             $client->name = $name;
             $client->address = $address;
             $client->phone = $phone;
-            $client->code = $code;
+            $client->mail = $code;
             $client->created_on = HelperFunctions::getDate();
             $client->updated_on = HelperFunctions::getDate();
             $client->deleted = 0;
@@ -162,7 +162,7 @@ class Clients extends CActiveRecord{
             $this->name = $name;
             $this->address = $address;
             $this->phone = $phone;
-            $this->code = $code;
+            $this->mail = $code;
             $this->updated_on = HelperFunctions::getDate();
             if($this->save())
                 return true;
@@ -189,10 +189,11 @@ class Clients extends CActiveRecord{
 
         public function toArray(){
             $me = array();
+            $me['id'] = $this->id;
             $me['name'] = $this->name;
             $me['address'] = $this->address;
             $me['phone'] = $this->phone;
-            $me['code'] = $this->code;
+            $me['mail'] = $this->mail;
             $me['updated_on'] = $this->updated_on;
             $me['created_on'] = $this->created_on;
             return $me;

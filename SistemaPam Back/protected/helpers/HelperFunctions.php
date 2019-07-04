@@ -334,12 +334,17 @@ class HelperFunctions
 		return $spanishDate;
     }
     
-    public static function getFormattedDate($origDate){
+    public static function getFormattedDate($origDate){//2019-07-03T03:00:00.000Z
+        try{
+            return date("Y-m-d H:i:s", strtotime($origDate));
 
 
-        $dateStarted = DateTime::createFromFormat('D M d Y H:i:s e+', $origDate);
-        date_default_timezone_set('America/Montevideo');
-        return $dateStarted->format("Y-m-d H:i:s");
+        }
+        catch (Exception $ex){
+            die("EEE ".$ex->getMessage());
+        }
+
+
 
     }
 	

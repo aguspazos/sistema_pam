@@ -108,7 +108,7 @@ class WorksController extends Controller
         $response = array();
         try {
             if ($this->administrator) {
-                $hasWorkPrints  = false;
+                $hasWorkPrints  = true;
                 $hasWorkLaminates = false;
                 $hasWorkRumblings = false;
                 $hasWorkUv = false;
@@ -116,9 +116,7 @@ class WorksController extends Controller
                 $workDeliver = false;
 
                 $currentStatus = WorkStatuses::$STARTED;
-                if (isset($_POST['work_prints'])) {
-                    $hasWorkPrints = true;
-                }
+
                 if (isset($_POST['work_laminates'])) {
                     $hasWorkLaminates = true;
                 }
@@ -135,8 +133,14 @@ class WorksController extends Controller
                     $workDeliver = true;
                 }
 
-                if (isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['prints_amount']) && isset($_POST['image_url']) && isset($_POST['notes']) && isset($this->administrator->id) && isset($_POST['due_date'])) {
-                    $work = Works::create($_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'], $_POST['prints_amount'], $_POST['image_url'], $_POST['notes'], $this->administrator->id, $currentStatus, 0, $_POST['due_date']);
+                if (isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['prints_amount'])  && isset($_POST['notes']) && isset($this->administrator->id) ) {
+
+                    if(isset($_POST['due_date']))
+                        $due_date = $_POST['due_date'];
+                    else $due_date = "2019-06-26 20:49:00";
+
+                    $work = Works::create($_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'], $_POST['prints_amount'], "asdasd", $_POST['notes'], $this->administrator->id, $currentStatus, 0, $due_date);
+
                     if (!$work->hasErrors()) {
                         if ($hasWorkPrints) {
                             WorkPrints::create($work->id, $this->administrator->id);
@@ -174,7 +178,9 @@ class WorksController extends Controller
                                 $this->administrator->id
                             );
                         }
+
                         WorkFinished::create($work->id, $this->administrator->id);
+
                         if ($workDeliver) {
                             WorkDelivers::create(
                                 $work->id,

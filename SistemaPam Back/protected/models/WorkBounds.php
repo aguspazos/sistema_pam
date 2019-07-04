@@ -8,6 +8,7 @@
  * @property integer $work_id
  * @property integer $type
  * @property string $others_text
+ * @property string $notes
  * @property datetime $created_on
  * @property datetime $updated_on
  * @property boolean $deleted
@@ -196,6 +197,7 @@ class WorkBounds extends CActiveRecord{
             $me = array();
             $me['type'] = $this->type;
             $me['others_text'] = $this->others_text;
+            $me['notes'] = $this->notes;
             if($withNotes){
                 $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$BOUNDED);
                 foreach($workStatusChanges as $workStatusChange){

@@ -3,4 +3,5 @@ export class BoundsState {
   id?: number;
   type?: number;
   others?: string;
+  notes?: string;
 }

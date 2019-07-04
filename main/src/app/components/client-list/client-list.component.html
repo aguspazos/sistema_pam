@@ -1,11 +1,20 @@
 <div>
-  <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div
+    style="margin-left: 15px;"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
     <h2>Clientes</h2>
-    <button color="primary" mat-raised-button (click)="showCreate()">
+    <button
+      color="primary"
+      style="margin-right: 15px;"
+      mat-raised-button
+      (click)="showCreate()"
+    >
       Crear Cliente
     </button>
   </div>
-  <div class="tableDiv">
+  <div class="wrapper" style="margin-bottom: 25px;">
     <mat-table
       #tableClients
       [dataSource]="dataSource"
@@ -26,6 +35,15 @@
         </mat-header-cell>
         <mat-cell *cdkCellDef="let element">
           {{ element.phone }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="address">
+        <mat-header-cell *cdkHeaderCellDef mat-sort-header>
+          Dirección
+        </mat-header-cell>
+        <mat-cell *cdkCellDef="let element">
+          {{ element.address }}
         </mat-cell>
       </ng-container>
 
@@ -59,8 +77,6 @@
 
       <mat-row
         *cdkRowDef="let row; columns: displayedColumns; let rowInd = index"
-        [cdkDetailRow]="row"
-        [cdkDetailRowTpl]="tpl"
         (click)="watchClient(row)"
         [ngClass]="{ 'detalles-row': detallesRow == rowInd }"
       >
@@ -81,7 +97,6 @@
         [pageIndex]="0"
         [pageSize]="10"
         [pageSizeOptions]="[5, 10, 25, 100]"
-        [itemsPerPageLabel]="'Listas por página'"
       >
       </mat-paginator>
     </footer>
