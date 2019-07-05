@@ -141,21 +141,88 @@ export class CreateBudgetComponent implements OnInit {
     }
   }
 
+  getBudgetErrors() {
+    var errors = "";
+    if (this.budget.paper_size == undefined || this.budget.paper_size == "") {
+      errors += " Debes ingresar el tamaño de papel.";
+    }
+    if (
+      this.budget.paper_type_id == undefined ||
+      this.budget.paper_type_id == ""
+    ) {
+      errors += " Debes ingresar el tipo de papel.";
+    }
+    if (
+      this.budget.prints_amount == undefined ||
+      isNaN(this.budget.prints_amount) ||
+      this.budget.prints_amount == 0
+    ) {
+      errors += " La cantidad de impresiones debe ser numérica.";
+    }
+    return errors;
+  }
+
+  getLaminationErrors() {
+    var errors = "";
+    if (this.lamination.type == 0) {
+      errors += " Debes elegir un tipo de laminado.";
+    }
+    if (
+      this.lamination.printing == undefined ||
+      this.lamination.printing == ""
+    ) {
+      errors += " Debes ingresar el tiraje del laminado.";
+    }
+    return errors;
+  }
+
+  getRumblingErrors() {
+    var errors = "";
+    if (this.rumbling.shape == undefined || this.rumbling.shape == "") {
+      errors += " Debes ingresar la forma del troquelado";
+    }
+    if (
+      this.rumbling.amount == undefined ||
+      isNaN(this.rumbling.amount) ||
+      this.rumbling.amount == 0
+    ) {
+      errors += " La cantidad de troquelado debe ser numérica.";
+    }
+    return errors;
+  }
+
+  getBindingErrors() {
+    var errors = "";
+    if (this.bound.type == 0) {
+      errors += " Debes elegir un tipo de encuadernación.";
+    }
+    if (this.bound.type == 3) {
+      if (this.bound.others == undefined || this.bound.others == "") {
+        errors +=
+          " Debes especificar el tipo de encuadernación al marcar 'otros'";
+      }
+    }
+
+    return errors;
+  }
+
   getErrors() {
+    var errors = "";
     if (this.budget.print_type_id != 1 && this.budget.print_type_id != 2) {
-      return "Debes elegir un tipo de impresión";
+      errors += " Debes elegir un tipo de impresión.";
     }
+    errors = this.getBudgetErrors();
     if (this.hasLamination) {
-      if (this.lamination.type == 0) {
-        return "Debes elegir un tipo de laminado";
-      }
+      errors += this.getLaminationErrors();
     }
+    if (this.hasDieCutting) errors += this.getRumblingErrors();
     if (this.hasBinding) {
-      if (this.bound.type == 0) {
-        return "Debes elegir un tipo de encuadernación";
-      }
+      errors += this.getBindingErrors();
     }
-    return "ok";
+    if (this.myClient == undefined || this.myClient.id == undefined) {
+      errors += " Debes seleccionar un cliente";
+    }
+    return errors;
   }
 
   ngOnInit() {}
@@ -168,14 +235,14 @@ export class CreateBudgetComponent implements OnInit {
 
   saveBudget() {
     this.delivery = new Delivery();
-    this.delivery.client_id = this.myClient.id;
-    this.delivery.deliver_date = this.fecha.toDateString();
-    this.budget.due_date = this.fecha;
-    this.budget.client = this.myClient;
-    this.budget.work_delivers = this.delivery;
     var errors = this.getErrors();
-    if (errors == "ok") {
+    if (errors == "") {
       try {
+        this.delivery.client_id = this.myClient.id;
+        this.delivery.deliver_date = this.fecha.toDateString();
+        this.budget.due_date = this.fecha;
+        this.budget.client = this.myClient;
+        this.budget.work_delivers = this.delivery;
         this.worksService.createWork(this.budget);
       } catch (e) {
         this.alertService.error("Ocurrió un error.", "OK");

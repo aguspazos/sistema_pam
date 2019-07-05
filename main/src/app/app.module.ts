@@ -44,9 +44,12 @@ import {
 import { ClientsService } from "./services/clients.service";
 import { AppConfig } from "./app.config";
 import { WorksService } from "./services/works.service";
-import { UserLayoutComponent } from './components/user-layout/user-layout.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { UserCreateComponent } from './components/user-create/user-create.component';
+import { UserLayoutComponent } from "./components/user-layout/user-layout.component";
+import { UserEditComponent } from "./components/user-edit/user-edit.component";
+import { UserCreateComponent } from "./components/user-create/user-create.component";
+import { FactoryComponent } from "./layouts/factory/factory.component";
+import { FactoryHeaderComponent } from "./layouts/factory/header/factory-header.component";
+import { FactorySidebarComponent } from "./layouts/factory/sidebar/factory-sidebar.component";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -58,7 +61,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     FullComponent,
+    FactoryComponent,
     AppHeaderComponent,
+    FactoryHeaderComponent,
+    FactorySidebarComponent,
     SpinnerComponent,
     AppBlankComponent,
     AppSidebarComponent,

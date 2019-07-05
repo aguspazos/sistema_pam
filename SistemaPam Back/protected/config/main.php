@@ -67,11 +67,20 @@ return array(
 		),
 		// uncomment the following to use a MySQL database
 		*/
-		'db'=>array(
+		/*
+		 * 'db'=>array(
 			'connectionString' => 'mysql:host=localhost;port=3306;dbname=trabajos',
 			'emulatePrepare' => true,
 			'username' => 'matias@trabajos.pam.com.uy',
 			'password' => 'N9DYLVppQaLNJRT4tgHK',
+			'charset' => 'utf8',
+		),
+		 * */
+		'db'=>array(
+			'connectionString' => 'mysql:host=localhost;port=3306;dbname=arocena_db',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		

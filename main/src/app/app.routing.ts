@@ -14,6 +14,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { ClientListComponent } from "./components/client-list/client-list.component";
 import { ProviderListComponent } from "./components/provider-list/provider-list.component";
 import { ClientLayoutComponent } from "./components/client-layout/client-layout.component";
+import { FactoryComponent } from "./layouts/factory/factory.component";
 
 export const AppRoutes: Routes = [
   {
@@ -63,49 +64,18 @@ export const AppRoutes: Routes = [
       },
       {
         path: "",
-        redirectTo: "/dashboards/dashboard1",
+        redirectTo: "/trabajos-activos",
         pathMatch: "full"
-      },
+      }
+    ]
+  },
+  {
+    path: "",
+    component: FactoryComponent,
+    children: [
       {
-        path: "dashboards",
-        loadChildren: "./dashboards/dashboards.module#DashboardsModule"
-      },
-      {
-        path: "material",
-        loadChildren:
-          "./material-component/material.module#MaterialComponentsModule"
-      },
-      {
-        path: "apps",
-        loadChildren: "./apps/apps.module#AppsModule"
-      },
-      {
-        path: "forms",
-        loadChildren: "./forms/forms.module#FormModule"
-      },
-      {
-        path: "tables",
-        loadChildren: "./tables/tables.module#TablesModule"
-      },
-      {
-        path: "datatables",
-        loadChildren: "./datatables/datatables.module#DataTablesModule"
-      },
-      {
-        path: "pages",
-        loadChildren: "./pages/pages.module#PagesModule"
-      },
-      {
-        path: "widgets",
-        loadChildren: "./widgets/widgets.module#WidgetsModule"
-      },
-      {
-        path: "charts",
-        loadChildren: "./charts/chartslib.module#ChartslibModule"
-      },
-      {
-        path: "multi",
-        loadChildren: "./multi-dropdown/multi-dd.module#MultiModule"
+        path: "planta",
+        component: ActiveBudgetListComponent
       }
     ]
   },

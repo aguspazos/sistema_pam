@@ -11,3 +11,4 @@ RewriteRule . index.php
 
 # force ssl and .uy
 RewriteCond %{SERVER_PORT} 80
+

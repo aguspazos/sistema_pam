@@ -30,7 +30,7 @@ export interface Menu {
   children?: ChildrenItems[];
 }
 
-const MENUITEMS = [
+const MENU_ITEMS = [
   {
     state: "",
     name: "Administración",
@@ -82,9 +82,27 @@ const MENUITEMS = [
   }
 ];
 
+const FACTORY_MENU_ITEMS = [
+  {
+    state: "",
+    name: "Planta",
+    type: "saperator",
+    icon: "av_timer"
+  },
+  {
+    state: "planta",
+    name: "Trabajos Activos",
+    type: "link",
+    icon: "widgets"
+  }
+];
+
 @Injectable()
 export class MenuItems {
   getMenuitem(): Menu[] {
-    return MENUITEMS;
+    return MENU_ITEMS;
+  }
+  getFactoryMenuItems(): Menu[] {
+    return FACTORY_MENU_ITEMS;
   }
 }

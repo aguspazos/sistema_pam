@@ -82,7 +82,7 @@
             <ng-template matStepLabel>Terminaciones</ng-template>
 
             <mat-vertical-stepper [linear]="false">
-              <mat-step>
+              <mat-step *ngIf="!hasUV">
                 <ng-template matStepLabel>Laminado</ng-template>
                 <div fxLayout="row wrap">
                   <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
@@ -135,6 +135,32 @@
                   </div>
                 </div>
               </mat-step>
+
+              <mat-step *ngIf="!hasLamination">
+                <ng-template matStepLabel>Terminación UV</ng-template>
+                <div fxLayout="row wrap">
+                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
+                    Tiene Terminación Uv
+                    <mat-radio-group>
+                      <mat-radio-button
+                        (change)="uvSelectionChange($event)"
+                        color="primary"
+                        value="true"
+                        class="m-r-10"
+                        >Si</mat-radio-button
+                      >
+                      <mat-radio-button
+                        (change)="uvSelectionChange($event)"
+                        color="primary"
+                        value="false"
+                        class="m-r-10"
+                        >No</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </mat-step>
+
               <mat-step>
                 <ng-template matStepLabel>Troquelado</ng-template>
                 <div fxLayout="row wrap">
@@ -188,30 +214,7 @@
                   </div>
                 </div>
               </mat-step>
-              <mat-step>
-                <ng-template matStepLabel>Terminación UV</ng-template>
-                <div fxLayout="row wrap">
-                  <div fxFlex.gt-sm="100" fxFlex="100" class="m-t-20 m-b-20">
-                    Tiene Terminación Uv
-                    <mat-radio-group>
-                      <mat-radio-button
-                        (change)="uvSelectionChange($event)"
-                        color="primary"
-                        value="true"
-                        class="m-r-10"
-                        >Si</mat-radio-button
-                      >
-                      <mat-radio-button
-                        (change)="uvSelectionChange($event)"
-                        color="primary"
-                        value="false"
-                        class="m-r-10"
-                        >No</mat-radio-button
-                      >
-                    </mat-radio-group>
-                  </div>
-                </div>
-              </mat-step>
+
               <mat-step>
                 <ng-template matStepLabel>Encuadernación</ng-template>
                 <div fxLayout="row wrap">
@@ -254,7 +257,11 @@
                       >
                     </mat-radio-group>
                   </div>
-                  <div fxFlex.gt-sm="100" fxFlex="100">
+                  <div
+                    [style.display]="bound.type == 3 ? '' : 'none'"
+                    fxFlex.gt-sm="100"
+                    fxFlex="100"
+                  >
                     <mat-form-field>
                       <textarea
                         matInput

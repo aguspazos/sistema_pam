@@ -39,6 +39,7 @@ export class WorksService {
     work.print_type_id = jsonWork.print_type_id;
     work.paper_size = jsonWork.paper_size;
     work.prints_amount = jsonWork.prints_amount;
+    work.paper_type_id = jsonWork.paper_type_id;
     work.image_url = jsonWork.image_url;
     work.notes = jsonWork.notes;
     work.current_status_type_id = jsonWork.current_status_type_id;
@@ -222,6 +223,7 @@ export class WorksService {
         if (status == "ok") {
           var next_status_name = res.next_status_name;
           work.next_status_name = next_status_name;
+          work.status_notes = "";
           if (work.next_status_name == "Para Entregar") {
             this.removeWorkFromActive(work);
             this.alertService.success("Trabajo terminado", "OK");

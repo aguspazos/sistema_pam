@@ -1,9 +1,5 @@
-<div
-  fxLayout="row"
-  *ngFor="let work of works"
-  fxLayoutAlign="space-around center"
->
-  <div class="work-card" fxFlex="90" fxFlex.sm="100" fxFlex.xs="100">
+<div fxFlex="30" *ngFor="let work of works" fxLayoutAlign="space-around center">
+  <div class="work-card" fxFlex.sm="100" fxFlex.xs="100">
     <div class="card-row" fxLayoutAlign="space-between center">
       <div class="title">Trabajo para: {{ work.client.name }}</div>
       <div class="title">Fecha de entrega: {{ work.due_date }}</div>
@@ -93,7 +89,7 @@
 
             <div class="card-row" fxLayoutAlign="space-between center">
               <div class="normal-text">
-                Cantidad: {{ work.work_rumblings.quantity }}
+                Cantidad: {{ work.work_rumblings.amount }}
               </div>
             </div>
 

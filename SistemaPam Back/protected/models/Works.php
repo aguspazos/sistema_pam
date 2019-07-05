@@ -345,7 +345,7 @@ class Works extends CActiveRecord
                 if($deliver != false){
                     $client = Clients::get($deliver->client_id);
                     if($client != false){
-                        Works::sendMail("Trabajo Pronto", "Le informamos que su trabajo está pronto","Le informamos que su trabajo está pronto",$client->mail,$client->name);
+                      //  Works::sendMail("Trabajo Pronto", "Le informamos que su trabajo está pronto","Le informamos que su trabajo está pronto",$client->mail,$client->name);
                     }
                 }
 
@@ -355,7 +355,7 @@ class Works extends CActiveRecord
                 if($deliver != false){
                     $client = Clients::get($deliver->client_id);
                     if($client != false){
-                        Works::sendMail("Trabajo Entregado", "Le informamos que entregamos su trabajo","Le informamos que entregamos su trabajo",$client->mail,$client->name);
+                      //  Works::sendMail("Trabajo Entregado", "Le informamos que entregamos su trabajo","Le informamos que entregamos su trabajo",$client->mail,$client->name);
                     }
                 }
 
@@ -453,6 +453,7 @@ class Works extends CActiveRecord
         $me['print_type_id'] = $this->print_type_id;
         $me['paper_size'] = $this->paper_size;
         $me['prints_amount'] = $this->prints_amount;
+        $me['paper_type_id'] = $this->paper_type_id;
         $me['image_url'] = $this->image_url;
         $me['notes'] = $this->notes;
         $me['created_on'] = $this->created_on;

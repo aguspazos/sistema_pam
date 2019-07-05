@@ -13,6 +13,7 @@ export class Budget {
   prints_amount?: number;
   image_url?: string;
   notes?: string;
+  status_notes?: string;
   updated_on?: Date;
   due_date?: Date;
   current_work_status_id?: number;

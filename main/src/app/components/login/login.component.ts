@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.value["contrasena"] == "12345678"
     ) {
       this.alertService.success("Login User OK");
-      this.router.navigate(["/trabajos-activos"]);
+      this.router.navigate(["/planta"]);
     } else {
       this.alertService.error("Los datos no son válidos.", "OK");
       return false;

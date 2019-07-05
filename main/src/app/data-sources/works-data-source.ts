@@ -98,7 +98,7 @@ export class WorksDataSource extends DataSource<any> {
       let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
 
       return (
-        (valueA < valueB ? -1 : 1) * (this._sort.direction == "asc" ? 1 : -1)
+        (valueA > valueB ? -1 : 1) * (this._sort.direction == "asc" ? 1 : -1)
       );
     });
   }

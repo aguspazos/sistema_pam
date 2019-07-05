@@ -3,7 +3,13 @@
   *ngFor="let work of works"
   fxLayoutAlign="space-around center"
 >
-  <div class="work-card" fxFlex="90" fxFlex.sm="100" fxFlex.xs="100">
+  <div
+    [style.background-color]="isOverdue(work) ? 'lightcoral' : 'transparent'"
+    class="work-card"
+    fxFlex="30"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+  >
     <div class="card-row" fxLayoutAlign="space-between center">
       <div class="title">Trabajo para: {{ work.client.name }}</div>
       <div class="title">Fecha de entrega: {{ work.due_date }}</div>
@@ -46,7 +52,7 @@
     <div fxLayout="row wrap" *ngIf="work.next_status_name == 'Para Laminar'">
       <div class="card-row" fxLayoutAlign="space-between center">
         <div class="Title">
-          Tipo de Laminado: {{ work.work_laminates.type }}
+          Tipo de Laminado: {{ work.work_laminates.string_type }}
         </div>
       </div>
 
@@ -56,7 +62,12 @@
         </div>
       </div>
       <mat-form-field>
-        <input matInput [(ngModel)]="notes" placeholder="Notas" required />
+        <input
+          matInput
+          [(ngModel)]="work.status_notes"
+          placeholder="Notas"
+          required
+        />
       </mat-form-field>
     </div>
 
@@ -67,7 +78,7 @@
 
       <div class="card-row" fxLayoutAlign="space-between center">
         <div class="normal-text">
-          Cantidad: {{ work.work_rumblings.quantity }}
+          Cantidad: {{ work.work_rumblings.amount }}
         </div>
       </div>
 
@@ -94,7 +105,7 @@
     >
       <div class="card-row" fxLayoutAlign="space-between center">
         <div class="Title">
-          Tipo de encuadernación: {{ work.work_bounds.type }}
+          Tipo de encuadernación: {{ work.work_bounds.string_type }}
         </div>
       </div>
 
