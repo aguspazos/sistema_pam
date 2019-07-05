@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Boiler Bud 66',
+	'name'=>'Pam',
         'defaultController' => 'Site/index',
 	
         // user language (for Locale)
@@ -67,13 +67,22 @@ return array(
 		),
 		// uncomment the following to use a MySQL database
 		*/
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;port=3306;dbname=trabajos',
+		// 'db'=>array(
+		// 	'connectionString' => 'mysql:host=localhost;port=3306;dbname=trabajos',
+		// 	'emulatePrepare' => true,
+		// 	'username' => 'matias@trabajos.pam.com.uy',
+		// 	'password' => 'N9DYLVppQaLNJRT4tgHK',
+		// 	'charset' => 'utf8',
+        // ),
+        
+        'db'=>array(
+			'connectionString' => 'mysql:host=localhost;port=3306;dbname=pam_db',
 			'emulatePrepare' => true,
-			'username' => 'matias@trabajos.pam.com.uy',
-			'password' => 'N9DYLVppQaLNJRT4tgHK',
+			'username' => 'root',
+			'password' => 'root',
 			'charset' => 'utf8',
-		),
+        ),
+        
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

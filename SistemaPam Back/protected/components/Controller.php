@@ -23,11 +23,11 @@ class Controller extends CController
 
     /* SEO Vars */
     public $pageURL = 'http://boilerbud66.com';
-    public $pageTitle = 'Boiler Bud 66';
-    public $pageDescription = 'Win tickets to Boiler Room Asunción and trip to London.';
+    public $pageTitle = 'Pam';
+    public $pageDescription = 'Pam Works';
     public $pageRobotsIndex = true;
     public $pageImages = array(
-        '0' => 'http://boilerbud66.com/facebookMeta.jpg',
+        '0' => '',
     );
 
     public $administrator=false;

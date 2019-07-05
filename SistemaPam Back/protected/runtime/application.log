@@ -494,3 +494,103 @@ Stack trace:
 #1 /Users/Mati/Documents/Trabajo/Pam Git/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #2 /Users/Mati/Documents/Trabajo/Pam Git/SistemaPam Back/public_html/index.php(12): CApplication->run()
 #3 {main} REQUEST_URI=/docs-assets/ico/favicon.png
+2019/07/04 18:21:48 [error] [exception.CDbException] CDbException: CDbConnection falló al abrir la conexion a la base de datos: SQLSTATE[HY000] [1045] Access denied for user 'matias@trabajos.pam.com.uy'@'localhost' (using password: YES) in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/CDbConnection.php:348
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CModule.php(372): CDbConnection->init()
+#3 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Errors))
+#7 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/ar/CActiveRecord.php(386): CActiveRecord::model('Errors')
+#8 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/db/ar/CActiveRecord.php(62): CActiveRecord->getMetaData()
+#9 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/models/Errors.php(112): CActiveRecord->__construct()
+#10 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/components/Controller.php(56): Errors::log('Error en Contro...', 'CDbConnection f...', '')
+#11 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(327): Controller->init()
+#12 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#13 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#14 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CApplication->run()
+#15 {main} REQUEST_URI=/
+2019/07/04 20:06:00 [error] [php] Trying to get property 'id' of non-object (/Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/admin.php:79)
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/widgets/CContentDecorator.php(78): BuilderController->renderFile()
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/widgets/CContentDecorator.php(56): CContentDecorator->decorate()
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/widgets/COutputProcessor.php(45): CContentDecorator->processOutput()
+#3 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(199): CContentDecorator->run()
+#4 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(294): BuilderController->endWidget()
+#5 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/column2.php(4): BuilderController->endContent()
+#6 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(119): require()
+#7 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(88): BuilderController->renderInternal()
+#8 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(781): BuilderController->renderFile()
+#9 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/controllers/BuilderController.php(56): BuilderController->render()
+#10 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/actions/CInlineAction.php(50): BuilderController->actionViewBuild()
+#11 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#12 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CFilterChain.php(133): BuilderController->runAction()
+#13 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#15 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CInlineFilter.php(59): BuilderController->filterAccessControl()
+#16 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#17 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(283): CFilterChain->run()
+#18 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(257): BuilderController->runActionWithFilters()
+#19 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(328): BuilderController->run()
+#20 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#21 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#22 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/builder/viewBuild
+in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/admin.php (79)
+in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/column2.php (4)
+in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/controllers/BuilderController.php (56)
+2019/07/04 20:06:01 [error] [php] Trying to get property 'id' of non-object (/Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/admin.php:79)
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/widgets/CContentDecorator.php(78): BuilderController->renderFile()
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/widgets/CContentDecorator.php(56): CContentDecorator->decorate()
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/widgets/COutputProcessor.php(45): CContentDecorator->processOutput()
+#3 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(199): CContentDecorator->run()
+#4 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(294): BuilderController->endWidget()
+#5 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/column2.php(4): BuilderController->endContent()
+#6 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(119): require()
+#7 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CBaseController.php(88): BuilderController->renderInternal()
+#8 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(781): BuilderController->renderFile()
+#9 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/controllers/BuilderController.php(56): BuilderController->render()
+#10 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/actions/CInlineAction.php(50): BuilderController->actionViewBuild()
+#11 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(300): CInlineAction->runWithParams()
+#12 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CFilterChain.php(133): BuilderController->runAction()
+#13 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#15 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CInlineFilter.php(59): BuilderController->filterAccessControl()
+#16 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#17 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(283): CFilterChain->run()
+#18 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CController.php(257): BuilderController->runActionWithFilters()
+#19 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(328): BuilderController->run()
+#20 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#21 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#22 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CWebApplication->run()
+REQUEST_URI=/builder/viewBuild
+in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/admin.php (79)
+in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/views/layouts/column2.php (4)
+in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/protected/controllers/BuilderController.php (56)
+2019/07/04 20:09:49 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/07/04 20:09:49 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/07/04 20:09:49 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
+2019/07/04 20:11:16 [error] [exception.CHttpException.404] CHttpException: No es posible resolver la solicitud "js/Menu.js" in /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/web/CWebApplication.php(121): CWebApplication->runController('js/Menu.js')
+#1 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/yii/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /Users/apazos/Desktop/Trabajos/sistema_pam/SistemaPam Back/public_html/index.php(12): CApplication->run()
+#3 {main} REQUEST_URI=/js/Menu.js
