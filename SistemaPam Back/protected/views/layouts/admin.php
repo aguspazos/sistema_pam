@@ -71,16 +71,6 @@
         </div>
     </div>
     
-    <div id="topBar" class="backgroundColor2">
-        <div id="topBarLogoContainer">
-            <img id="topBarLogo" src="/files/layouts/boilerRoomLogo.png">
-        </div>
-        <div id="accountOptions" >
-            <a id="topBarEmail" class="color2" href="/Administrators/viewEdit/<?php echo($this->administrator->id);?>"><?php echo($this->administrator->email);?></a>
-            <a id="myProfile" href="/Administrators/viewEdit/<?php echo($this->administrator->id);?>">Mi perfil</a>
-            <a id="logout" href="/Site/logout">Cerrar sesión</a>
-        </div>
-    </div>
     
     
     <div id="loaderFixedContainer">

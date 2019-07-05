@@ -18,7 +18,6 @@ class ClientsController extends Controller
         );
     }
 
-
     /**
      * Specifies the access control rules.
      * This method is used by the 'accessControl' filter.
@@ -28,11 +27,10 @@ class ClientsController extends Controller
     {
         return array(
 
-            array(
-                'allow',  // allow all users to perform 'index' and 'view' actions
-                'actions' => array('getAllArray', 'add', 'save', 'delete'),
-                'users' => array('*'),
-            ),
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('addFromExcel'),
+				'users'=>array('*'),
+			),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('getArray', 'getAllArray', 'viewMain', 'viewAdd', 'viewEdit', 'add', 'save', 'delete'),
@@ -51,51 +49,6 @@ class ClientsController extends Controller
         );
     }
 
-    /**
-     * Displays a particular model.
-     * @param integer $id the ID of the model to be displayed
-     */
-    public function actionViewMain()
-    {
-        try {
-
-            $this->render('main');
-        } catch (Exception $ex) {
-            Errors::log('Error en ClientsController/actionViewMain', $ex->getMessage(), '');
-            $this->redirect('/site/userError');
-        }
-    }
-
-    /**
-     * Displays a particular model.
-     * @param integer $id the ID of the model to be displayed
-     */
-    public function actionViewAdd()
-    {
-        try {
-
-            $this->render('add', array());
-        } catch (Exception $ex) {
-            Errors::log('Error en ClientsController/actionViewAdd', $ex->getMessage(), '');
-            $this->redirect('/site/userError');
-        }
-    }
-
-    /**
-     * Displays a particular model.
-     * @param integer $id the ID of the model to be displayed
-     */
-    public function actionViewEdit($id = 0)
-    {
-        try {
-            $clients = Clients::getAll();
-
-            $this->render('edit', array('id' => $id, 'clients' => $clients,));
-        } catch (Exception $ex) {
-            Errors::log('Error en ClientsController/actionViewEdit', $ex->getMessage(), '');
-            $this->redirect('/site/userError');
-        }
-    }
 
     /**
      * Displays a particular model.
@@ -107,10 +60,13 @@ class ClientsController extends Controller
         try {
             if ($this->administrator) {
                 $clientArray = $_POST;
-                if (isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['mail'])) {
+                if (isset($clientArray['name']) && isset($clientArray['business_name']) && isset($clientArray['rut']) && isset($clientArray['document']) && isset($clientArray['country']) && isset($clientArray['department']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['mobile_phone']) && isset($clientArray['mail']) && isset($clientArray['second_mail'])) {
 
-                    $client = Clients::create($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['mail']);
+                    $client = Clients::create($clientArray['code'],$clientArray['name'], $clientArray['business_name'], $clientArray['rut'], $clientArray['document'], $clientArray['country'], $clientArray['department'], $clientArray['address'], $clientArray['phone'], $clientArray['mobile_phone'], $clientArray['mail'], $clientArray['second_mail']);
                     if (!$client->hasErrors()) {
+
+
+
                         $response['status'] = 'ok';
                         $response['message'] = Clients::getModelName('singular') . ' agregado.';
                         $response['id'] = $client->id;
@@ -129,7 +85,7 @@ class ClientsController extends Controller
             } else {
                 $response['status'] = 'error';
                 $response['error'] = 'unauthorized';
-                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta accion';
             }
             echo json_encode($response);
         } catch (Exception $ex) {
@@ -147,11 +103,11 @@ class ClientsController extends Controller
         try {
             if ($this->administrator) {
                 $clientArray = $_POST;
-                if (isset($clientArray['id']) && is_numeric($clientArray['id']) && isset($clientArray['name']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['mail'])) {
+                if (isset($clientArray['id']) && is_numeric($clientArray['id']) && isset($clientArray['name']) && isset($clientArray['business_name']) && isset($clientArray['rut']) && isset($clientArray['document']) && isset($clientArray['country']) && isset($clientArray['department']) && isset($clientArray['address']) && isset($clientArray['phone']) && isset($clientArray['mobile_phone']) && isset($clientArray['mail']) && isset($clientArray['second_mail'])) {
                     $client = Clients::get($clientArray['id']);
                     if (isset($client->id)) {
 
-                        $client->updateAttributes($clientArray['name'], $clientArray['address'], $clientArray['phone'], $clientArray['mail']);
+                        $client->updateAttributes($clientArray['code'],$clientArray['name'], $clientArray['business_name'], $clientArray['rut'], $clientArray['document'], $clientArray['country'], $clientArray['department'], $clientArray['address'], $clientArray['phone'], $clientArray['mobile_phone'], $clientArray['mail'], $clientArray['second_mail']);
                         if (!$client->hasErrors()) {
 
 
@@ -177,7 +133,7 @@ class ClientsController extends Controller
             } else {
                 $response['status'] = 'error';
                 $response['error'] = 'unauthorized';
-                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta accion';
             }
             echo json_encode($response);
         } catch (Exception $ex) {
@@ -194,24 +150,30 @@ class ClientsController extends Controller
     public function actionGetArray()
     {
         try {
-            if (isset($_POST['id']) && is_numeric($_POST['id'])) {
-                $client = Clients::get($_POST['id']);
-                if (isset($client->id)) {
-                    $clientArray = HelperFunctions::modelToArray($client);
+            if ($this->administrator) {
+                if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+                    $client = Clients::get($_POST['id']);
+                    if (isset($client->id)) {
+                        $clientArray = HelperFunctions::modelToArray($client);
 
 
 
-                    $response['status'] = 'ok';
-                    $response['client'] = $clientArray;
+                        $response['status'] = 'ok';
+                        $response['client'] = $clientArray;
+                    } else {
+                        $response['status'] = 'error';
+                        $response['error'] = 'NoClientWithId';
+                        $response['errorMessage'] = 'NoClientWithId';
+                    }
                 } else {
                     $response['status'] = 'error';
-                    $response['error'] = 'NoClientWithId';
-                    $response['errorMessage'] = 'NoClientWithId';
+                    $response['error'] = 'invalidData';
+                    $response['errorMessage'] = 'invalidData';
                 }
             } else {
                 $response['status'] = 'error';
-                $response['error'] = 'invalidData';
-                $response['errorMessage'] = 'invalidData';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta accion';
             }
             echo json_encode($response);
         } catch (Exception $ex) {
@@ -225,21 +187,21 @@ class ClientsController extends Controller
 
     public function actionGetAllArray()
     {
-
         try {
             if ($this->administrator) {
                 $clientsArray = array();
                 $clients = Clients::getAll();
                 foreach ($clients as $client)
-                    $clientsArray[] = $client->toArray();
+                    $clientsArray[] = HelperFunctions::modelToArray($client);
 
                 $response['clients'] = $clientsArray;
                 $response['status'] = 'ok';
             } else {
                 $response['status'] = 'error';
                 $response['error'] = 'unauthorized';
-                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta accion';
             }
+
             echo json_encode($response);
         } catch (Exception $ex) {
             Errors::log('Error en ClientsController/actionGetAllArray', $ex->getMessage(), '');
@@ -255,6 +217,7 @@ class ClientsController extends Controller
         $response = array();
         try {
             if ($this->administrator) {
+
                 if (isset($_POST['id']) && is_numeric($_POST['id'])) {
                     $client = Clients::get($_POST['id']);
                     if (isset($client->id)) {
@@ -276,7 +239,7 @@ class ClientsController extends Controller
             } else {
                 $response['status'] = 'error';
                 $response['error'] = 'unauthorized';
-                $response['errorMessage'] = 'No estas autorizado a realizar esta acción';
+                $response['errorMessage'] = 'No estas autorizado a realizar esta accion';
             }
             echo json_encode($response);
         } catch (Exception $ex) {
@@ -286,5 +249,32 @@ class ClientsController extends Controller
             $response['errorMessage'] = 'unknown';
             echo json_encode($response);
         }
+    }
+
+    public function actionAddFromExcel(){
+                Yii::import('application.extensions.*');
+                require_once 'PHPExcel/PHPExcel/IOFactory.php';
+    
+                $objPHPExcel = PHPExcel_IOFactory::load(Yii::app()->basePath.'/controllers/clients.xls');
+                $sheetData = $objPHPExcel->getSheetByName('Clientes')->toArray(null,true,true,true);
+    
+                $count = 0;
+                foreach($sheetData as $row){
+    //                    if(strlen($row['A'])<4){
+                        if(strcasecmp($row['A'],'Código cliente') != 0){
+                            $client = Clients::model()->find('code = :code',array('code'=>$row['A']));
+                            if(isset($client->id)){
+                            
+                                $client->updateAttributes($row['A'],$row['B'], $row['C'], $row['D'], $row['E'], $row['F'],$row['G'] , $row['I'], $row['L'], $row['M'], $row['O'], $row['P']);
+                            }else{
+                                Clients::create($row['A'],$row['B'], $row['C'], $row['D'], $row['E'], $row['F'],$row['G'] , $row['I'], $row['L'], $row['M'], $row['O'], $row['P']);
+                            }
+                        }
+                        //}
+                    $count++;
+                }
+                
+                echo($count);
+
     }
 }
