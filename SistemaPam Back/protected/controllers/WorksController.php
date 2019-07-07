@@ -154,13 +154,13 @@ class WorksController extends Controller
                     $workDeliver = true;
                 }
 
-                if (isset($_POST['name']) && isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['amount']) && isset($_POST['prints_amount'])  && isset($_POST['notes']) && isset($this->administrator->id)) {
+                if (isset($_POST['name']) && isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['amount']) && isset($_POST['prints_amount'])  && isset($_POST['image_url']) && isset($_POST['notes']) && isset($this->administrator->id)) {
 
                     if (isset($_POST['due_date']))
                         $due_date = $_POST['due_date'];
                     else $due_date = "2019-06-26 20:49:00";
 
-                    $work = Works::create($_POST['name'],$_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'],$_POST['amount'],$_POST['prints_amount'], "asdasd", $_POST['notes'], $this->administrator->id, $currentStatus, 0, $due_date);
+                    $work = Works::create($_POST['name'],$_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'],$_POST['amount'],$_POST['prints_amount'], $_POST['image_url'], $_POST['notes'], $this->administrator->id, $currentStatus, 0, $due_date);
 
                     if (!$work->hasErrors()) {
                         if ($hasWorkPrints) {
