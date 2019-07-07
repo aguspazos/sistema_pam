@@ -28,15 +28,10 @@ class ClientsController extends Controller
         return array(
 
             array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('addFromExcel'),
+				'actions'=>array('addFromExcel','getArray', 'getAllArray', 'viewMain', 'viewAdd', 'viewEdit', 'add', 'save', 'delete'),
 				'users'=>array('*'),
 			),
-            array(
-                'allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('getArray', 'getAllArray', 'viewMain', 'viewAdd', 'viewEdit', 'add', 'save', 'delete'),
-                'users' => array('@'),
-                'expression' => 'isset(Yii::app()->user->role) && (Yii::app()->user->role===\'admin\')',
-            ),
+            
             array(
                 'allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions' => array(),
@@ -191,8 +186,14 @@ class ClientsController extends Controller
             if ($this->administrator) {
                 $clientsArray = array();
                 $clients = Clients::getAll();
-                foreach ($clients as $client)
+                $count = 0;
+                foreach ($clients as $client){
                     $clientsArray[] = HelperFunctions::modelToArray($client);
+
+                    $count++;
+                    if($count > 100)
+                        break;
+                }
 
                 $response['clients'] = $clientsArray;
                 $response['status'] = 'ok';
