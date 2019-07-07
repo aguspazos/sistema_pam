@@ -147,11 +147,12 @@ class WorkBounds extends CActiveRecord{
             return self::model()->findAll('id>0 AND deleted=0');
         }
         
-        public static function create($work_id, $type, $others_text, $admin_id){
+        public static function create($work_id, $type, $others_text,$notes, $admin_id){
             $workBound = new WorkBounds;
             $workBound->work_id = $work_id;
             $workBound->type = $type;
             $workBound->others_text = $others_text;
+            $workBound->notes = $notes;
             $workBound->created_on = HelperFunctions::getDate();
             $workBound->updated_on = HelperFunctions::getDate();
             $workBound->deleted = 0;
@@ -164,10 +165,11 @@ class WorkBounds extends CActiveRecord{
             }
         }
             
-        public function updateAttributes($work_id, $type, $others_text, $admin_id){
+        public function updateAttributes($work_id, $type, $others_text,$notes, $admin_id){
             $this->work_id = $work_id;
             $this->type = $type;
             $this->others_text = $others_text;
+            $this->notes = $notes;
             $this->updated_on = HelperFunctions::getDate();
             $this->admin_id = $admin_id;
             if($this->save())

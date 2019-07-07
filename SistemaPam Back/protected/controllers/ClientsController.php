@@ -184,18 +184,9 @@ class ClientsController extends Controller
     {
         try {
             if ($this->administrator) {
-                $clientsArray = array();
-                $clients = Clients::getAll();
-                $count = 0;
-                foreach ($clients as $client){
-                    $clientsArray[] = HelperFunctions::modelToArray($client);
+                $clients = Clients::getAllAsArray();
 
-                    $count++;
-                    if($count > 100)
-                        break;
-                }
-
-                $response['clients'] = $clientsArray;
+                $response['clients'] = $clients;
                 $response['status'] = 'ok';
             } else {
                 $response['status'] = 'error';

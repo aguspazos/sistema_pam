@@ -147,11 +147,12 @@ class WorkDelivers extends CActiveRecord{
             return self::model()->findAll('id>0 AND deleted=0');
         }
         
-        public static function create($work_id, $client_id, $deliver_date, $admin_id){
+        public static function create($work_id, $client_id, $deliver_date,$notes, $admin_id){
             $workDeliver = new WorkDelivers;
             $workDeliver->work_id = $work_id;
             $workDeliver->client_id = $client_id;
-            $workDeliver->deliver_date = HelperFunctions::getDate();// HelperFunctions::getFormattedDate($deliver_date);
+            $workDeliver->deliver_date = HelperFunctions::getFormattedDate($deliver_date);
+            $workDeliver->notes  = $notes;
             $workDeliver->created_on = HelperFunctions::getDate();
             $workDeliver->updated_on = HelperFunctions::getDate();
             $workDeliver->deleted = 0;
@@ -164,10 +165,11 @@ class WorkDelivers extends CActiveRecord{
             }
         }
             
-        public function updateAttributes($work_id, $client_id, $deliver_date, $admin_id){
+        public function updateAttributes($work_id, $client_id, $deliver_date,$notes,$admin_id){
             $this->work_id = $work_id;
             $this->client_id = $client_id;
             $this->deliver_date = HelperFunctions::getFormattedDate($deliver_date);
+            $this->notes = $notes;
             $this->updated_on = HelperFunctions::getDate();
             $this->admin_id = $admin_id;
             if($this->save())
@@ -191,6 +193,27 @@ class WorkDelivers extends CActiveRecord{
                 Errors::log('Error en Models/WorkDelivers/deleteWorkDeliver','Error deleting workDeliver id:$this->id', print_r($this->getErrors(),true));
                 return false;
             }
+        }
+
+        public function toArray($withNotes = true){
+            $me = array();
+            $me['id'] = $this->id;
+            $me['work_id'] = $this->id;
+            $me['client_id'] = $this->id;
+            $me['deliver_date'] = $this->deliver_date;
+            $me['notes'] = $this->notes;
+            $me['created_on'] = $this->created_on;
+            $me['updated_on'] = $this->updated_on;
+            $me['admin_id'] = $this->admin_id;
+
+            if($withNotes){
+                $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$DELIVERED);
+                foreach($workStatusChanges as $workStatusChange){
+                    $me['statusChangeNotes'][] = $workStatusChange->notes;
+                }
+            }
+            
+            return $me;
         }
             
         

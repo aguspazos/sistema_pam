@@ -151,12 +151,13 @@ class WorkRumblings extends CActiveRecord{
             return self::model()->findAll('id>0 AND deleted=0');
         }
         
-        public static function create($work_id, $shape, $amount, $detail, $admin_id){
+        public static function create($work_id, $shape, $amount, $detail, $notes,$admin_id){
             $workRumbling = new WorkRumblings;
             $workRumbling->work_id = $work_id;
             $workRumbling->shape = $shape;
             $workRumbling->amount = $amount;
             $workRumbling->detail = $detail;
+            $workRumbling->notes = $notes;
             $workRumbling->created_on = HelperFunctions::getDate();
             $workRumbling->updated_on = HelperFunctions::getDate();
             $workRumbling->deleted = 0;
@@ -169,11 +170,12 @@ class WorkRumblings extends CActiveRecord{
             }
         }
             
-        public function updateAttributes($work_id, $shape, $amount, $detail, $admin_id){
+        public function updateAttributes($work_id, $shape, $amount, $detail,$notes, $admin_id){
             $this->work_id = $work_id;
             $this->shape = $shape;
             $this->amount = $amount;
             $this->detail = $detail;
+            $this->notes = $notes;
             $this->updated_on = HelperFunctions::getDate();
             $this->admin_id = $admin_id;
             if($this->save())
@@ -208,7 +210,7 @@ class WorkRumblings extends CActiveRecord{
             if($withNotes){
                 $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$WITH_RUMBLING);
                 foreach($workStatusChanges as $workStatusChange){
-                    $me['notes'][] = $workStatusChange->notes;
+                    $me['statusChangeNotes'][] = $workStatusChange->notes;
                 }
             }
             return $me;

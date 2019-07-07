@@ -140,9 +140,10 @@ class WorkPrints extends CActiveRecord{
         }
         
         
-        public static function create($work_id, $admin_id){
+        public static function create($work_id,$notes,$admin_id){
             $workDetail = new WorkPrints;
             $workDetail->work_id = $work_id;
+            $workDetail->notes = $notes;
             $workDetail->created_on = HelperFunctions::getDate();
             $workDetail->updated_on = HelperFunctions::getDate();
             $workDetail->deleted = 0;
@@ -155,8 +156,9 @@ class WorkPrints extends CActiveRecord{
             }
         }
             
-        public function updateAttributes($work_id, $admin_id){
+        public function updateAttributes($work_id, $notes,$admin_id){
             $this->work_id = $work_id;
+            $this->notes = $notes;
             $this->updated_on = HelperFunctions::getDate();
             $this->admin_id = $admin_id;
             if($this->save())
@@ -180,6 +182,20 @@ class WorkPrints extends CActiveRecord{
                 Errors::log('Error en Models/WorkDetails/deleteWorkDetail','Error deleting workDetail id:$this->id', print_r($this->getErrors(),true));
                 return false;
             }
+        }
+
+        public function toArray($withNotes=false){
+            $me = array();
+            $me['id'] = $this->id;
+            $me['work_id'] = $this->work_id;
+            $me['notes'] = $this->notes;
+            if($withNotes){
+                $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$PRINTED);
+                foreach($workStatusChanges as $workStatusChange){
+                    $me['statusChangeNotes'][] = $workStatusChange->notes;
+                }
+            }
+            return $me;
         }
             
         

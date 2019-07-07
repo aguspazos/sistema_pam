@@ -66,8 +66,8 @@ class Works extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('print_type_id, paper_size, paper_type_id, prints_amount, image_url, notes, created_on, updated_on, deleted, admin_id, current_work_status_id, current_status_type_id,due_date, ', 'required'),
-            array('print_type_id, prints_amount, admin_id, current_work_status_id, current_status_type_id, ', 'numerical', 'integerOnly' => true),
+            array('name,print_type_id, paper_size, paper_type_id,amount,prints_amount, image_url, notes, created_on, updated_on, deleted, admin_id, current_work_status_id, current_status_type_id,due_date, ', 'required'),
+            array('print_type_id,amount, prints_amount, admin_id, current_work_status_id, current_status_type_id, ', 'numerical', 'integerOnly' => true),
             array('deleted, ', 'boolean'),
             array('created_on, updated_on, ', 'date', 'format' => 'yyyy-MM-dd hh:mm:ss'),
             array('image_url', 'length', 'max' => 512),
@@ -235,12 +235,14 @@ class Works extends CActiveRecord
         return $worksToReturn;
      //   return self::model()->findAll('current_work_status_id = :status and deleted = 0 order by due_date ASC', array('status' => WorkStatuses::$FINISHED));
     }
-    public static function create($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id, $current_work_status_id, $current_status_type_id,$due_date)
+    public static function create($name,$print_type_id, $paper_size, $paper_type_id,$amount, $prints_amount, $image_url, $notes, $admin_id, $current_work_status_id, $current_status_type_id,$due_date)
     {
         $work = new Works;
+        $work->name = $name;
         $work->print_type_id = $print_type_id;
         $work->paper_size = $paper_size;
         $work->paper_type_id = $paper_type_id;
+        $work->amount = $amount;
         $work->prints_amount = $prints_amount;
         $work->image_url = $image_url;
         $work->notes = $notes;
@@ -259,11 +261,13 @@ class Works extends CActiveRecord
         }
     }
 
-    public function updateAttributes($print_type_id, $paper_size, $paper_type_id, $prints_amount, $image_url, $notes, $admin_id,$due_date)
+    public function updateAttributes($name,$print_type_id, $paper_size, $paper_type_id, $amount,$prints_amount, $image_url, $notes, $admin_id,$due_date)
     {
+        $this->name = $name;
         $this->print_type_id = $print_type_id;
         $this->paper_size = $paper_size;
         $this->paper_type_id = $paper_type_id;
+        $this->amount = $amount;
         $this->prints_amount = $prints_amount;
         $this->image_url = $image_url;
         $this->notes = $notes;
@@ -443,15 +447,17 @@ class Works extends CActiveRecord
         $mail->AltBody = $nonHtmlBody;//'This is the body in plain texst for non-HTML mail clients';
 
         if (!$mail->send()) {
-            Errors::log("No se pudo mandar el mail","Hola");
+            Errors::log("No se pudo mandar el mail","Hola","no se pudo");
         }
     }
 
     public function toArray($withStatusTypes = false,$withNotes = true){
         $me = array();
         $me['id'] = $this->id;
+        $me['name'] = $this->name;
         $me['print_type_id'] = $this->print_type_id;
         $me['paper_size'] = $this->paper_size;
+        $me['amount'] = $this->amount;
         $me['prints_amount'] = $this->prints_amount;
         $me['paper_type_id'] = $this->paper_type_id;
         $me['image_url'] = $this->image_url;
@@ -481,7 +487,13 @@ class Works extends CActiveRecord
 
         }
         if($withStatusTypes){
-            $laminated = 'noData';
+            $prints = 'noData';
+            $workPrints = WorkPrints::getFromWorkId($this->id);
+            if($workPrints){
+                $prints = $workPrints->toArray(true);
+            }
+            $me['work_prints'] = $prints;
+            $laminated = "noData";
             $workLaminated = WorkLaminates::getFromWorkId($this->id);
             if($workLaminated){
                 $laminated = $workLaminated->toArray(true);
@@ -509,8 +521,20 @@ class Works extends CActiveRecord
                 $uv = $workUv->toArray($withNotes);
             }
             $me['work_uvs'] = $uv;
+            $finished = 'noData';
+            $workFinish = WorkFinished::getFromWorkId($this->id);
+            if($workFinish){
+                $finished = $workFinish->toArray($withNotes);
+            }
+            $me['work_finished'] = $finished;
+
+            $delivers = 'noData';
+            $workDelivered = WorkDelivers::getFromWorkId($this->id);
+            if($workDelivered){
+                $delivers = $workDelivered->toArray($withNotes);
+            }
+            $me['work_delivers'] = $delivers;
         }
-        
         return $me;
     }
 }

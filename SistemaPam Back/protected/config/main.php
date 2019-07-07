@@ -77,7 +77,7 @@ return array(
 		),
 		 * */
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;port=3306;dbname=arocena_db',
+			'connectionString' => 'mysql:host=localhost;port=3306;dbname=pam_db',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'root',

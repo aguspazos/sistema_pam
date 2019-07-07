@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $code
  * @property string $name
- * @property string $business_name
+ * @property string $business_name //name,bn,address,phone,mobile_phone,mail
  * @property string $rut
  * @property string $document
  * @property string $country
@@ -210,6 +210,13 @@ class Clients extends CActiveRecord
     public static function getAll()
     {
         return self::model()->findAll('id>0 AND deleted=0');
+    }
+
+    
+    public static function getAllAsArray()
+    {
+        $sql = "SELECT name,business_name,address,phone,mobile_phone,mail from clients c where deleted = 0 order by name";
+        return Yii::app()->db->createCommand($sql)->queryAll();
     }
 
     public static function create($code,$name, $business_name, $rut, $document, $country, $department, $address, $phone, $mobile_phone, $mail, $second_mail)

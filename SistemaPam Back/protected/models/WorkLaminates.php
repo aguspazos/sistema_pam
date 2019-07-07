@@ -147,11 +147,12 @@ class WorkLaminates extends CActiveRecord{
             return self::model()->findAll('id>0 AND deleted=0');
         }
         
-        public static function create($work_id, $printing, $type, $admin_id){
+        public static function create($work_id, $printing, $type,$notes, $admin_id){
             $workLaminat = new WorkLaminates;
             $workLaminat->work_id = $work_id;
             $workLaminat->printing = $printing;
             $workLaminat->type = $type;
+            $workLaminat->notes = $notes;
             $workLaminat->created_on = HelperFunctions::getDate();
             $workLaminat->updated_on = HelperFunctions::getDate();
             $workLaminat->deleted = 0;
@@ -164,10 +165,11 @@ class WorkLaminates extends CActiveRecord{
             }
         }
             
-        public function updateAttributes($work_id, $printing, $type, $admin_id){
+        public function updateAttributes($work_id, $printing, $type,$notes, $admin_id){
             $this->work_id = $work_id;
             $this->printing = $printing;
             $this->type = $type;
+            $this->notes = $notes;
             $this->updated_on = HelperFunctions::getDate();
             $this->admin_id = $admin_id;
             if($this->save())

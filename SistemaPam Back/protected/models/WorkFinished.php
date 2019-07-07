@@ -6,9 +6,12 @@
  * The followings are the available columns in table 'work_finished':
  * @property integer $id
  * @property integer $work_id
+ * @property string $notes
  * @property datetime $created_on
  * @property datetime $updated_on
  * @property boolean $deleted
+ * @property int $
+ * 
  */
  
 class WorkFinished extends CActiveRecord{
@@ -133,12 +136,14 @@ class WorkFinished extends CActiveRecord{
             return self::model()->findAll('id>0 AND deleted=0');
         }
         
-        public static function create($work_id){
+        public static function create($work_id,$notes,$adminId){
             $workFinishe = new WorkFinished;
             $workFinishe->work_id = $work_id;
+            $workFinishe->notes = $notes;
             $workFinishe->created_on = HelperFunctions::getDate();
             $workFinishe->updated_on = HelperFunctions::getDate();
             $workFinishe->deleted = 0;
+            $workFinishe->admin_id = $adminId;
             if($workFinishe->save())
                 return $workFinishe;
             else{
@@ -147,8 +152,10 @@ class WorkFinished extends CActiveRecord{
             }
         }
             
-        public function updateAttributes($work_id){
+        public function updateAttributes($work_id,$notes,$adminId){
             $this->work_id = $work_id;
+            $this->notes = $notes;
+            $this->admin_id = $adminId;
             $this->updated_on = HelperFunctions::getDate();
             if($this->save())
                 return true;
@@ -156,6 +163,23 @@ class WorkFinished extends CActiveRecord{
                 Errors::log('Error en Models/WorkFinished/updateWorkFinishe','Error updating workFinishe id:$this->id', print_r($this->getErrors(),true));
                 return false;
             }
+        }
+
+        public function toArray($withNotes = false){
+            $me = array();
+            $me['id'] = $this->id;
+            $me['work_id'] = $this->id;
+            $me['notes'] = $this->notes;
+            $me['created_on'] = $this->created_on;
+            $me['updated_on'] = $this->updated_on;
+            $me['admin_id'] = $this->admin_id;
+            if($withNotes){
+                $workStatusChanges = WorkStatusChanges::getAllFromWorkAndFinalStatus($this->work_id,WorkStatuses::$FINISHED);
+                foreach($workStatusChanges as $workStatusChange){
+                    $me['statusChangeNotes'][] = $workStatusChange->notes;
+                }
+            }
+            return $me;
         }
             
         

@@ -29,7 +29,7 @@ class WorksController extends Controller
 
             array(
                 'allow',  // allow all users to perform 'index' and 'view' actions
-                'actions' => array('add', 'getAllNotFinished', 'getAllToSend', 'nextStatus','getAllSent'),
+                'actions' => array('add', 'getAllNotFinished', 'getAllToSend', 'nextStatus', 'getAllSent','getPreferences'),
                 'users' => array('*'),
             ),
             array(
@@ -99,6 +99,27 @@ class WorksController extends Controller
         }
     }
 
+
+    public function actionGetPreferences(){
+        $response = array();
+        try{
+            if($this->administrator){
+                $response['status'] = 'ok';
+                $response['data'] = Preferences::getAmazonKeyAndSecret();
+            }else{
+                $response['status'] = 'error';
+                $response['error'] = 'unauthorized';
+                $response['errorMessage'] = 'No tienes autorización para realizar esta acción';
+            }
+
+        }catch(Exception $ex){
+            Errors::log('Error en WorkController/getPreferences', $ex->getMessage(), '');
+            $response['status'] = 'error';
+            $response['error'] = 'unknown';
+            $response['errorMessage'] = 'unknown';
+        }
+        echo json_encode($response);
+    }
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
@@ -133,23 +154,28 @@ class WorksController extends Controller
                     $workDeliver = true;
                 }
 
-                if (isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['prints_amount'])  && isset($_POST['notes']) && isset($this->administrator->id) ) {
+                if (isset($_POST['name']) && isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['amount']) && isset($_POST['prints_amount'])  && isset($_POST['notes']) && isset($this->administrator->id)) {
 
-                    if(isset($_POST['due_date']))
+                    if (isset($_POST['due_date']))
                         $due_date = $_POST['due_date'];
                     else $due_date = "2019-06-26 20:49:00";
 
-                    $work = Works::create($_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'], $_POST['prints_amount'], "asdasd", $_POST['notes'], $this->administrator->id, $currentStatus, 0, $due_date);
+                    $work = Works::create($_POST['name'],$_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'],$_POST['amount'],$_POST['prints_amount'], "asdasd", $_POST['notes'], $this->administrator->id, $currentStatus, 0, $due_date);
 
                     if (!$work->hasErrors()) {
                         if ($hasWorkPrints) {
-                            WorkPrints::create($work->id, $this->administrator->id);
+                            WorkPrints::create(
+                                $work->id,
+                                isset($_POST['work_prints']['notes']) ? $_POST['work_prints']['notes'] : "-",
+                                $this->administrator->id
+                            );
                         }
                         if ($hasWorkLaminates) {
                             WorkLaminates::create(
                                 $work->id,
                                 $_POST['work_laminates']['printing'],
                                 $_POST['work_laminates']['type'],
+                                isset($_POST['work_laminates']['notes']) ? $_POST['work_laminates']['notes'] : "-",
                                 $this->administrator->id
                             );
                         }
@@ -159,33 +185,46 @@ class WorksController extends Controller
                                 $_POST['work_rumblings']['shape'],
                                 $_POST['work_rumblings']['amount'],
                                 $_POST['work_rumblings']['detail'],
+                                isset($_POST['work_rumblings']['notes']) ? $_POST['work_rumblings']['notes'] : "-",
                                 $this->administrator->id
                             );
                         }
                         if ($hasWorkUv) {
-                            WorkUvs::create($work->id, $this->administrator->id);
+                            WorkUvs::create(
+                                $work->id,
+                                isset($_POST['work_uvs']['notes']) ? $_POST['work_uvs']['notes'] : "-",
+                                $this->administrator->id
+                            );
                         }
                         if ($hasWorkBound) {
-                            if(!isset($_POST['work_bounds']['others_text']) || $_POST['work_bounds']['others_text'] == ""){
+                            if (!isset($_POST['work_bounds']['others_text']) || $_POST['work_bounds']['others_text'] == "") {
                                 $otherText = "-";
-                            }else{
+                            } else {
                                 $otherText = $_POST['work_bounds']['others_text'];
                             }
                             WorkBounds::create(
                                 $work->id,
                                 $_POST['work_bounds']['type'],
                                 $otherText,
+                                isset($_POST['work_bounds']['notes']) ? $_POST['work_bounds']['notes'] : "-",
                                 $this->administrator->id
                             );
                         }
 
-                        WorkFinished::create($work->id, $this->administrator->id);
+
+                        if (isset($_POST['work_finished']['notes'])) {
+                            $finishNotes = $_POST['work_finished']['notes'];
+                        } else {
+                            $finishNotes = "-";
+                        }
+                        WorkFinished::create($work->id, $finishNotes, $this->administrator->id);
 
                         if ($workDeliver) {
                             WorkDelivers::create(
                                 $work->id,
                                 $_POST['work_delivers']['client_id'],
                                 $_POST['work_delivers']['deliver_date'],
+                                isset($_POST['work_delivers']['notes']) ? $_POST['work_delivers']['notes'] : "-",
                                 $this->administrator->id
                             );
                         }
@@ -223,11 +262,11 @@ class WorksController extends Controller
         $response = array();
         try {
             if ($this->administrator) {
-                if (isset($_POST['id']) && is_numeric($_POST['id']) && isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['prints_amount']) && isset($_POST['image_url']) && isset($_POST['notes']) && isset($_POST['due_date'])) {
+                if (isset($_POST['id']) && is_numeric($_POST['id']) && isset($_POST['name']) && isset($_POST['print_type_id']) && isset($_POST['paper_size']) && isset($_POST['paper_type_id']) && isset($_POST['amount']) && isset($_POST['prints_amount']) && isset($_POST['image_url']) && isset($_POST['notes']) && isset($_POST['due_date'])) {
                     $work = Works::get($_POST['id']);
                     if (isset($work->id)) {
                         $adminId = isset($_POST['admin_id']) ? $_POST['admin_id'] : $work->admin_id;
-                        $work->updateAttributes($_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'], $_POST['prints_amount'], $_POST['image_url'], $_POST['notes'], $adminId, $_POST['due_date']);
+                        $work->updateAttributes($_POST['name'],$_POST['print_type_id'], $_POST['paper_size'], $_POST['paper_type_id'],$_POST['amount'], $_POST['prints_amount'], $_POST['image_url'], $_POST['notes'], $adminId, $_POST['due_date']);
                         if (!$work->hasErrors()) {
                             $response['status'] = 'ok';
                             $response['message'] = Works::getModelName('singular') . ' guardado.';
@@ -271,9 +310,6 @@ class WorksController extends Controller
                     $work = Works::get($_POST['id']);
                     if (isset($work->id)) {
                         $workArray = HelperFunctions::modelToArray($work);
-
-
-
                         $response['status'] = 'ok';
                         $response['work'] = $workArray;
                     } else {
@@ -425,7 +461,7 @@ class WorksController extends Controller
                 $works = Works::getAllNotFinished();
                 $worksArray = array();
                 foreach ($works as $work) {
-                    $aux = $work->toArray(true,true);
+                    $aux = $work->toArray(true, true);
                     $worksArray[] = $aux;
                 }
                 $response['status'] = 'ok';
@@ -444,7 +480,7 @@ class WorksController extends Controller
         echo json_encode($response);
     }
 
-    
+
 
     public function actionNextStatus()
     {
